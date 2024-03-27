@@ -354,6 +354,16 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
 					<xsd:documentation>Hospice</xsd:documentation>
 				</xsd:annotation>
 			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:documentation>Homeless/Unhoused</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:documentation>Transient Care</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
 			<xsd:enumeration value="98">
 				<xsd:annotation>
 					<xsd:documentation>Unknown</xsd:documentation>
