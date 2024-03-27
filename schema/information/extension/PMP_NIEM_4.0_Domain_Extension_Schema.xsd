@@ -1,0 +1,1082 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 sp1 (http://www.altova.com) by IJIS Institute (IJIS Institute) -->
+<!--
+IJIS Prescription (Drug) Monitoring Program (PMP) Information Exchange (PMIX) IEPD
+Extension Schema based on the NIEM 2.0 standard
+
+Copyright (C) IJIS Institute (2006). All Rights Reserved.
+
+This document and translations of it may be copied and furnished to others, and
+derivative works that comment on or otherwise explain it or assist in its
+implementation may be prepared, copied, published and distributed, in whole or
+in part, without restriction of any kind, provided that the above copyright
+notice and this paragraph are included on all such copies and derivative works.
+However, this document itself may not be modified in any way, such as by
+removing the copyright notice or references to the IJIS Institute, except as
+needed for the purpose of developing IJIS specifications, or as required to
+translate it into languages other than English.
+
+The limited permissions granted above are perpetual and will not be revoked by
+the IJIS Insitute or its successors or assigns.
+
+This document and the information contained herein is provided on an "AS IS"
+basis and IJIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT
+INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR
+A PARTICULAR PURPOSE.
+
+===============================================================================
+
+Document Type: Information Exchange Package Documentation (IEPD) XML Schema
+
+Modification History:
+October 28,2007- Winfield Wagner, Crossflo Systems - Initial Draft
+...edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com)
+
+November 25, 2008 - Chad Garner, Ohio State Board of Pharmacy
+...added pmp:RequestPrescriptionDateRange, pmp:RequestPrescriptionDateRangeBegin,
+and pmp:RequestPrescriptionDateRangeEnd
+
+November 26, 2008 - Chad Garner, Ohio State Board of PHarmacy
+...changed DespensingFeePaid to DispensingFeePaid
+...changed the type of element pmp:IngredientQuantity to nc:SubstanceMeasureType
+...added pmp:DispenserNPIID to pmp:DispenserType; pmp:DispenserNPIID was already defined
+...commented pmp:DispenserNDPDPID from pmp:DispenserType; pmp:DispenserType already contained
+pmp:DispenserNABPID, which is the same thing
+
+March 31, 2010 - Chad Garner, OSBP
+...mostly rewritten
+...now conforms to ASAP 2007 v4.0
+...replaced person extension types and organization extension type with roles in order to minimize repetition of data
+...updated element names to conform to NIEM naming standards
+...used explicit substitution for product id types instead of using a separate qualifier
+...used explicit substitution for patient id types instead of using a separate qualifier
+April 1, 2010 - Chad Garner, OSBP
+...Update to ASAP 2007 v4.1
+...Documentation added
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+	xmlns:j="http://release.niem.gov/niem/domains/jxdm/6.2/"
+	xmlns:niem-xsd="http://release.niem.gov/niem/proxy/xsd/4.0/"
+	xmlns:i="http://release.niem.gov/niem/appinfo/4.0/"
+	xmlns:pmp="http://pmixpmp.org/niem/4.0/extension"
+	xmlns:s="http://release.niem.gov/niem/structures/4.0/"
+	xmlns:pmpcd="http://pmixpmp.org/pmpcode"
+	targetNamespace="http://pmixpmp.org/niem/4.0/extension"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation>The NIEM 4.0 PMP domain specific extension schema.</xsd:documentation>
+	</xsd:annotation>
+	<!--
+  Subset schemas
+  -->
+	<xsd:import namespace="http://release.niem.gov/niem/structures/4.0/" schemaLocation="../subset/niem/utility/structures/4.0/structures.xsd"/>
+	<xsd:import namespace="http://release.niem.gov/niem/appinfo/4.0/" schemaLocation="../subset/niem/utility/appinfo/4.0/appinfo.xsd"/>
+	<xsd:import namespace="http://release.niem.gov/niem/proxy/xsd/4.0/" schemaLocation="../subset/niem/proxy/xsd/4.0/xs.xsd"/>
+	<xsd:import namespace="http://pmixpmp.org/pmpcode" schemaLocation="../code_set/PMIX_Code_Set.xsd"/>
+	<xsd:import namespace="http://release.niem.gov/niem/niem-core/4.0/" schemaLocation="../subset/niem/niem-core/4.0/niem-core.xsd"/>
+	<xsd:import namespace="http://release.niem.gov/niem/domains/jxdm/6.2/" schemaLocation="../subset/niem/domains/jxdm/6.2/jxdm.xsd"/>
+	<!--
+  Declarations of abstract properties used in PMP schema - in Alphabetical Order
+  -->
+	<xsd:element name="CompoundDrugIngredientProductIdentifier" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        This item must be substituted with pmp:CompoundDrugIngredientDINProductIdentifier, pmp:CompoundDrugIngredientHRIProductIdentifier,
+        pmp:CompoundDrugIngredientNDCProductIdentifier, pmp:CompoundDrugIngredientUPCProductIdentifider or pmp:CompoundDrugIngredientUPNProductIdentifier
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugProductIdentifier" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        This property must be substituted with pmp:DrugDINProductIdentifier, pmp:DrugHRIProductIdentifier, pmp:DrugNDCProductIdentifier,
+        pmp:DrupUPCProductIdentifier or pmp:DrugUPNProductIdentifier
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonIdentifier" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        This property must be substituted by pmp:PersonDriverLicenseIdentifier, pmp:PersonMilitaryIdentifier, pmp:PersonOtherIdentifier,
+        pmp:PersonPassportIdentifier, pmp:PersonSocialSecurityNumberIdentifier, pmp:PersonStateIssuedIdentifer, pmp:PersonTribalIdentifier
+        or pmp:PersonUniqueSystemIdentifier
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PrescriptionReport" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        This property must be substituted with pmp:PharmacyReportingPrescriptionReport or pmp:RequestResponsePrescriptionReport
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<!--
+  Substituation properties used in PMP schema - in Alphabetical Order
+  -->
+	<xsd:element name="CompoundDrugIngredientDINProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:CompoundDrugIngredientProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies an ingredient in a compound drug using the DIN
+        Replaces CDI02 and CDI03 when CDI02 is 05 DIN
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CompoundDrugIngredientHRIProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:CompoundDrugIngredientProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies an ingredient in a compound drug using the HRI
+        Replaces CDI02 and CDI03 when CDI02 is 03 HRI
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CompoundDrugIngredientNDCProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:CompoundDrugIngredientProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies an ingredient in a compound drug using the NDC
+        Replaces CDI02 and CDI03 when CDI02 is 01 NDC
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CompoundDrugIngredientUPCProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:CompoundDrugIngredientProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies an ingredient in a compound drug using the UPC
+        Replaces CDI02 and CDI03 when CDI02 is 02 UPC
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CompoundDrugIngredientUPNProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:CompoundDrugIngredientProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies an ingredient in a compound drug using the UPN
+        Replaces CDI02 and CDI03 when CDI02 is 04 UPN
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugCPDProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:DrugProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Used to indicate that the drug is a compound drug.  Use the pmp:CompoundDrug to transmit the ingredients in the drug
+        Replaces DSP07 and DSP08 when DSP07 is 06 Compound
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugDINProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:DrugProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies a drug using the DIN
+        Replaces DSP07 and DSP08 when DSP07 is 05 DIN
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugHRIProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:DrugProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies a drug using the HRI
+        Replaces DSP07 and DSP08 when DSP07 is 03 HRI
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugNDCProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:DrugProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies a drug using the NDC
+        Replaces DSP07 and DSP08 when DSP07 is 01 NDC
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugUPCProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:DrugProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies a drug using the UPC
+        Replaces DSP07 and DSP08 when DSP07 is 02 UPC
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugUPNProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:DrugProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies a drug using the UPN
+        Replaces DSP07 and DSP08 when DSP07 is 04 UPN
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonDriverLicenseIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identfies a person using their driver's license number and the entity which has jurisdiction over the licensee based on the license.
+        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonMilitaryIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identfies a person using their military id number and the entity which has jurisdiction over the licensee based on the license.
+        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonNationalHealthIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+				Identifies a person using their national health ID number and the entity which has jurisdiction over the ID.
+				This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonOtherIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identfies a person using an id number and the entity which has jurisdiction over the licensee based on the license.
+        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonPassportIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identfies a person using their passport number and the entity which has jurisdiction over tvhe passport.
+        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonSocialSecurityNumberIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identfies a person using their social security number and the entity which has jurisdiction over the number.
+        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonStateIssuedIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identfies a person using their state identification number and the entity which has jurisdiction over the identification.
+        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonTribalIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies a person using their tribal id number and the entity which has jurisdiction over the id.
+        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonUniqueSystemIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies a person using a unique system number and the entity which has jurisdiction over the number.
+        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonVendorSystemIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+				Identifies a person using an ID number provided by a vendor and the vendor which has jurisdiction over the number.
+				This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PharmacyReportingPrescriptionReport" type="pmp:PharmacyReportingPrescriptionReportType" substitutionGroup="pmp:PrescriptionReport">
+		<xsd:annotation>
+			<xsd:documentation>
+        A PharmacyReportingPrescriptionReport is substituted for a PrescriptionReport when the transmitting entity is a dispenser reporting prescription
+        information to a PMP. This was designed as a potential alternative to the x12 version of ASAP 4.1.
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReportDateRangeBegin" type="niem-xsd:date" substitutionGroup="nc:DateRepresentation" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies the beginning of the data range of prescriptions included in the report.
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReportDateRangeEnd" type="niem-xsd:date" substitutionGroup="nc:DateRepresentation" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies the end of the date range of prescriptions included in the report.
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RequestPrescriptionDateRangeBegin" type="niem-xsd:date" substitutionGroup="nc:DateRepresentation" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Used in a request for prescription data to indicate the beginning of the date range in which the responding PMP should search
+        for prescriptions matching the search criteria.
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RequestPrescriptionDateRangeEnd" type="niem-xsd:date" substitutionGroup="nc:DateRepresentation" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Used in a request for prescription data to indicate the beginning of the date range in which the responding PMP should search
+        for prescriptions matching the search criteria.
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RequestResponsePrescriptionReport" type="pmp:RequestResponsePrescriptionReportType" substitutionGroup="pmp:PrescriptionReport">
+		<xsd:annotation>
+			<xsd:documentation>
+        A prescription report sent to a PMP from another PMP in response to a request for information by that PMP.
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<!--
+  Delcarations of properties of types defined in subset schemas - in Alphabetical Order
+  -->
+	<xsd:element name="ChainSiteIDText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identification number of a particular store within a chain PHA12
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CompoundDrugIngredientDEAClassScheduleText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        The Class Identification assigned to the ingredient by DEA
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CompoundDrugIngredientDrugDosageUnitsCode" type="pmpcd:DrugDosageUnitsCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies the unit of measure for the quantity dispensed.
+        Replaces CDI05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CompoundDrugIngredientProductNameText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Common name of the compound drug ingredient
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CompoundDrugIngredientSequenceNumber" type="niem-xsd:nonNegativeInteger" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        The first reportable ingredient is 1. Each additional reortable ingredient is incremented by 1. CDI01
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CompoundDrugIngredientStrengthText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        The strength of the compound drug ingredient
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContactNameText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Name of the person to be contacted regarding questions about this report.
+        Replaces PHA11
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DaysSupplyCount" type="niem-xsd:nonNegativeInteger" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        The number of days the prescription will last when taken as directed. DSP10
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DEAClassScheduleText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        The Class Identification assigned to the drug by DEA
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DEANumberIdentifier" type="pmp:DEANumberIdentifierType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				Drug Enforcement Agency unique identification number. Required when the prescription is for a DEA-defined controlled substance.
+        Replaces PHA03 and PRE02 (PRE09 with XDEA flag)
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DispensedQuantity" type="niem-xsd:decimal" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Numeric quantity of a drug dispensed to the patient DSP09
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugDosageUnitsCode" type="pmpcd:DrugDosageUnitsCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies the unit of measure for the quantity dispensed.
+        Replaces DSP11
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugProductNameText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Product Name of the Drug.
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugRefillNumberCount" type="niem-xsd:nonNegativeInteger" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Number of the fill of the prescription. 0 indicates original dispensing. DSP06
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugStrengthText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        The level of potency of the drug.
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DrugUnitOfMeasureText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+					The unit in which the particular drug is measured
+				</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentPublicationTime" type="niem-xsd:time" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Time the report was generated for publication. 
+        Replaces TH06
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FileTypeCode" type="pmpcd:FileTypeCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code specifying the type of transaction
+        Replaces TH07
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ICD-10DiagnosticCodeText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				ICD-10 code for a prescription. DSP25
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="InformationSourceEntityNameText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Entity Name of the Information Source
+        Replaces IS02
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IngredientQuantity" type="niem-xsd:decimal" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Amount of the ingredient included in the compound
+        Replaces CDI04
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MessageText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Freeform text message.
+        Replaces IS03
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MethodOfPaymentCode" type="pmpcd:MethodOfPaymentCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Indicates the primary payment source provided for the prescription
+        Replaces DSP16
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NCPDPIdentifier" type="nc:IdentificationType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifier assigned by the National Council of Prescription Drug Programs. PHA02
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NPIIdentifier" type="nc:IdentificationType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        National Provider Identifier DSP14 PRE01 PHA01
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OpioidTreatmentCategoryCode" type="pmpcd:OpioidTreatmentCategoryCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				The reason for an opioid prescription..
+				Replaces DSP24
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Organization" type="nc:OrganizationType"/>
+	<xsd:element name="PartialFillIndicator" type="niem-xsd:boolean" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        To indicate whenter the quantity dispensed is a partial fill.
+        Replaces DSP13
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PatientLocationCode" type="pmpcd:PatientLocationCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Indicates where the patient is located when receiving pharmacy services
+        Replaces PAT21
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PatientNameOfAnimalText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Name of animal for veterinary medications
+        Replaces PAT23
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Person" type="nc:PersonType"/>
+	<xsd:element name="PersonPrimaryContactInformation" type="nc:ContactInformationType">
+		<xsd:annotation>
+			<xsd:documentation>
+        Holds telephone number and address of a person
+        Replaces PAT12, PAT13, PAT14, PAT15, PAT16, PAT17
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PrescribedQuantity" type="niem-xsd:decimal" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				Numeric quantity of a drug prescribed to the patient DSP22
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PrescriberDEANumberSuffixText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Suffix assigned to a prescriber by an institution for identification when the prescriber is authorized to prescribe
+        using the instituation's DEA number
+        Replaces PRE03
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PrescriptionFilledDate" type="nc:DateType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Date the prescription was filled
+        replaces DSP05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PrescriptionNormCodeText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Used for electronic prescriptions to capture the prescribed drug product identification
+        Replaces DSP19
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PrescriptionNormProductQualifierCode" type="pmpcd:PrescriptionNormProductQualifierCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+				Used for electronic prescriptions to capture the prescribed drug product identification
+				Replaces DSP19
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PrescriptionNumberText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Serial number assigned to the prescription by the pharmacy.
+        Replaces DSP02
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PrescriptionSoldDate" type="nc:DateType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Date the prescription was received by the patient or patient's agent
+        Replaces DSP17
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PrescriptionWrittenDate" type="nc:DateType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Date the prescription was written by the prescriber
+        Replaces DSP03
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RefillsAuthorizedCount" type="niem-xsd:nonNegativeInteger" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Number of times the prescriber has authorized the prescription to be refilled.
+        Replaces DSP04
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RelationshipToPatientCode" type="pmpcd:RelationshipToPatientCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+        Indicates an agent's relationship to a patient
+        Replaces AIR06
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReportExecutionDate" type="niem-xsd:date" substitutionGroup="nc:DateRepresentation" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        The Date the report was generated. Replaces TH05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReportExecutionTime" type="niem-xsd:time" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        The Time the report was generated. Replaces TH06
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReportingStatusCode" type="pmpcd:ReportingStatusCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+        Indicates whether the information is new, has changed or should be removed from the PMP's database
+        Replaces DSP01
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ResponseIDText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Contains the Transaction Control Number of a transaction that initiated the transaction - used in a response transaction only.
+        Replaces TH04
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RoutingNumber" type="niem-xsd:nonNegativeInteger" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identification of a specific PMP that the transaction should be routed to
+        Replaces TH08
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SpeciesCode" type="pmpcd:SpeciesCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Indicates whether the patient is human or an animal.
+        Replaces PAT20
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StateIssuedRxSerialNumberIdentification" type="nc:IdentificationType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Number assigned to a state issued serialized prescription blank as well as the state which issued it.
+        Replaces AIR01 and AIR02
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StateLicenseIdentifier" type="nc:IdentificationType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				A license that gives the organization the right to prescribe drugs for patients. This field can be used to denote prescriptions from Veterinarians. DSP15 PRE04 PHA13
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TransactionControlNumberText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Sender assigned code uniquely identifying a transaction.
+        Replaces TH02
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TransactionTypeCode" type="pmpcd:TransactionTypeCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies the purpose of initiating the transaction.
+        Repalces TH03
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TransmissionFormOfRxOriginCode" type="pmpcd:TransmissionFormOfRxOriginCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code indicating how the pharmacy received the prescription
+        Replaces DSP12
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="UniqueInformationSourceIDText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Reference number or identification number as defined by the business partners.
+        Replaces IS01
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="VersionReleaseNumberText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Replaces TH01
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="XDEAIndicator" type="niem-xsd:boolean" nillable="true">
+	<xsd:annotation>
+		<xsd:documentation>
+			True is a DEA number is an XDEA number; false otherwise.
+		</xsd:documentation>
+	</xsd:annotation>
+	</xsd:element>
+	<!--
+  Types defined in the PMP Extension Schema and their associated declarations
+  -->
+	<xsd:complexType name="PMPDocumentAugmentationType">
+		<xsd:complexContent>
+			<xsd:extension base="s:AugmentationType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:DocumentPublicationTime" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- Properties of Type pmp:PMPDocumentAugmentationType-->
+	<xsd:element name="PMPDocumentAugmentation" type="pmp:PMPDocumentAugmentationType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<i:appliesTo i:namespace="http://niem.gov/niem/niem-core/2.0" name="DocumentType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="DocumentType">
+		<xsd:complexContent>
+			<xsd:extension base="nc:DocumentType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:PMPDocumentAugmentation" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--Properties of Type pmp:DocumentType-->
+	<xsd:element name="Document" type="pmp:DocumentType"/>
+	<xsd:element name="PMPPresentationDocument" type="pmp:DocumentType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Document that holds information about the Presentation format for the Request Document such as a Style Sheet
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="PatientType">
+		<xsd:complexContent>
+			<xsd:extension base="nc:PersonType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:PersonPrimaryContactInformation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
+					<xsd:element ref="pmp:SpeciesCode" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientLocationCode" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientNameOfAnimalText" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientAlert" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--Properties of Type pmp:PatientType-->
+	<xsd:element name="Patient" type="pmp:PatientType"/>
+	<xsd:element name="PicklistPatient" type="pmp:PatientType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				A patient returned as part of a picklist of matching patients.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RequestPatient" type="pmp:PatientType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        The PMP state that receives the request from outside the state jurisdiction of the initiator and will execute the request.
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="CompoundDrugIngredientType">
+		<xsd:annotation>
+			<xsd:documentation>Ingredients that make up a compound drug.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ObjectType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:CompoundDrugIngredientSequenceNumber" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:CompoundDrugIngredientProductIdentifier" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:CompoundDrugIngredientProductNameText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:CompoundDrugIngredientStrengthText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:CompoundDrugIngredientDEAClassScheduleText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:IngredientQuantity" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:CompoundDrugIngredientDrugDosageUnitsCode" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PatientAlertType">
+		<xsd:annotation>
+			<xsd:documentation>Ingredients that make up a compound drug.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ObjectType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:PatientAlertDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PatientAlertCategoryCode" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PatientAlert" type="pmp:PatientAlertType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				An alert about a patient.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PatientAlertDescriptionText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				A textual description of an alert about a patient.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PatientAlertCategoryCode" type="pmpcd:PatientAlertCategoryCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				A code for a kind of an alert about a patient.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<!--Properties of Type pmp:CompoundDrugIngredientType-->
+	<xsd:element name="CompoundDrugIngredient" type="pmp:CompoundDrugIngredientType" nillable="true"/>
+	<xsd:complexType name="PrescriptionDrugType">
+		<xsd:complexContent>
+			<xsd:annotation>
+				<xsd:documentation>Type of medicinal treatment made of organic or inorganic compounds  that can be legally ordered for a patient's care  .
+			</xsd:documentation>
+			</xsd:annotation>
+			<xsd:extension base="s:ObjectType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:DrugProductIdentifier"/>
+					<xsd:element ref="pmp:DrugProductNameText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:DrugStrengthText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:DrugUnitOfMeasureText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:DEAClassScheduleText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:CompoundDrugIngredient" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PrescriptionDrug" type="pmp:PrescriptionDrugType" nillable="true"/>
+	<xsd:complexType name="DispenserType">
+		<xsd:complexContent>
+			<xsd:extension base="nc:OrganizationType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:NPIIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:DEANumberIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:StateLicenseIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:NCPDPIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:ContactNameText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:ChainSiteIDText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--Properties of Type pmp:DispenserType-->
+	<xsd:element name="Dispenser" type="pmp:DispenserType" nillable="true"/>
+	<xsd:element name="RequestDispenser" type="pmp:DispenserType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        The PMP state that receives the request from outside the state jurisdiction of the initiator and will execute the request.
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="PharmacistType">
+		<xsd:complexContent>
+			<xsd:extension base="nc:PersonType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:PersonPrimaryContactInformation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:NPIIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:StateLicenseIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--Properties of Type pmp:PharmacistType-->
+	<xsd:element name="Pharmacist" type="pmp:PharmacistType" nillable="true"/>
+	<xsd:complexType name="PrescriberType">
+		<xsd:complexContent>
+			<xsd:extension base="nc:PersonType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:PersonPrimaryContactInformation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:NPIIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:DEANumberIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PrescriberDEANumberSuffixText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:StateLicenseIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--Properties of Type pmp:PrescriberType-->
+	<xsd:element name="Prescriber" type="pmp:PrescriberType" nillable="true"/>
+	<xsd:element name="RequestPrescriber" type="pmp:PrescriberType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        The PMP state that receives the request from outside the state jurisdiction of the initiator and will execute the request.
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="PrescriptionType">
+		<xsd:annotation>
+			<xsd:documentation>Information from a completed prescription form and additional information add through PMP analysis.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ObjectType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:Dispenser" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PrescriptionNumberText" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:DrugRefillNumberCount" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PrescriptionFilledDate" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:Patient" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:Prescriber" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PrescriptionWrittenDate" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PrescriptionDrug" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:RefillsAuthorizedCount" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:DispensedQuantity" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:DaysSupplyCount" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:DrugDosageUnitsCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:MethodOfPaymentCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:TransmissionFormOfRxOriginCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PartialFillIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:Pharmacist" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:StateIssuedRxSerialNumberIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PrescribedQuantity" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:ICD-10DiagnosticCodeText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:OpioidTreatmentCategoryCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PrescriptionSoldDate" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--Properties of Type pmp:PrescriptionType-->
+	<xsd:element name="Prescription" type="pmp:PrescriptionType" nillable="true"/>
+	<xsd:complexType name="PrescriptionForReportingType">
+		<xsd:complexContent>
+			<xsd:extension base="pmp:PrescriptionType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:ReportingStatusCode" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PrescriptionNormCodeText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--Propties of Type pmp:PrescriptionReportingType-->
+	<xsd:element name="PrescriptionForReporting" type="pmp:PrescriptionForReportingType" nillable="true"/>
+	<xsd:complexType name="ReportDateRangeType">
+		<xsd:annotation>
+			<xsd:documentation>
+        Date range for prescription dispensing being reported
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ObjectType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:ReportDateRangeBegin"/>
+					<xsd:element ref="pmp:ReportDateRangeEnd"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--Properties of Type pmp:ReportDateRangeType-->
+	<xsd:element name="ReportDateRange" type="pmp:ReportDateRangeType" nillable="true"/>
+	<xsd:complexType name="RequestPrescriptionDateRangeType">
+		<xsd:annotation>
+			<xsd:documentation>
+        Date range for prescription dispensing being requested
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ObjectType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:RequestPrescriptionDateRangeBegin"/>
+					<xsd:element ref="pmp:RequestPrescriptionDateRangeEnd"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--Properties of Type pmp:RequestPrescriptionDateRangeType-->
+	<xsd:element name="RequestPrescriptionDateRange" type="pmp:RequestPrescriptionDateRangeType" nillable="true"/>
+	<xsd:complexType name="PharmacyReportingPrescriptionReportType">
+		<xsd:complexContent>
+			<xsd:extension base="pmp:DocumentType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:VersionReleaseNumberText" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:TransactionControlNumberText" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:TransactionTypeCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:ResponseIDText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:ReportExecutionDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:ReportExecutionTime" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:FileTypeCode" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:RoutingNumber" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:UniqueInformationSourceIDText" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:InformationSourceEntityNameText" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:MessageText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PrescriptionForReporting" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RequestResponsePrescriptionReportType">
+		<xsd:annotation>
+			<xsd:documentation>Report listing prescription activity sent in response to the request.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="pmp:DocumentType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:ReportExecutionDate" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:ReportExecutionTime" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:ReportDateRange" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:Prescription" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PicklistPatient" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DEANumberIdentifierType">
+		<xsd:annotation>
+			<xsd:documentation>Drug Enforcement Agency unique identification number.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:IdentificationType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:XDEAIndicator" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>
