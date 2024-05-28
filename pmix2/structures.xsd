@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://niem.gov/niem/post-canada/2.0" version="1" xmlns:can="http://niem.gov/niem/post-canada/2.0" xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:i="http://niem.gov/niem/appinfo/2.0">
+  <xsd:annotation>
+    <xsd:appinfo>
+      <i:ConformantIndicator>true</i:ConformantIndicator>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:import schemaLocation="../../structures/2.0/structures.xsd" namespace="http://niem.gov/niem/structures/2.0"/>
+  <xsd:import schemaLocation="../../appinfo/2.0/appinfo.xsd" namespace="http://niem.gov/niem/appinfo/2.0"/>
+  <xsd:simpleType name="CanadianProvinceCodeSimpleType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="AB"/>
+      <xsd:enumeration value="BC"/>
+      <xsd:enumeration value="MB"/>
+      <xsd:enumeration value="NB"/>
+      <xsd:enumeration value="NL"/>
+      <xsd:enumeration value="NS"/>
+      <xsd:enumeration value="NT"/>
+      <xsd:enumeration value="NU"/>
+      <xsd:enumeration value="ON"/>
+      <xsd:enumeration value="PE"/>
+      <xsd:enumeration value="QC"/>
+      <xsd:enumeration value="SK"/>
+      <xsd:enumeration value="YT"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="CanadianProvinceCodeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="can:CanadianProvinceCodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>
