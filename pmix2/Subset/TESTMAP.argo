@@ -1,0 +1,47 @@
+<argo version="6">
+  <documentation>
+    <authorname></authorname>
+    <authoremail></authoremail>
+    <version>0.30.2</version>
+    <description>
+      
+    </description>
+  </documentation>
+  <settings>
+    <notationlanguage>UML 1.4</notationlanguage>
+    <showboldnames>false</showboldnames>
+    <useguillemots>false</useguillemots>
+    <showassociationnames>true</showassociationnames>
+    <showvisibility>false</showvisibility>
+    <showmultiplicity>false</showmultiplicity>
+    <showinitialvalue>false</showinitialvalue>
+    <showproperties>false</showproperties>
+    <showtypes>true</showtypes>
+    <showstereotypes>false</showstereotypes>
+    <showsingularmultiplicities>true</showsingularmultiplicities>
+    <defaultshadowwidth>1</defaultshadowwidth>
+    <hidebidirectionalarrows>true</hidebidirectionalarrows>    
+    <fontname>Dialog</fontname>
+    <fontsize>12</fontsize>
+    <defaultstereotypeview>0</defaultstereotypeview>
+    <activediagram>Class Diagram</activediagram>
+  </settings>
+  <searchpath href="PROJECT_DIR" />
+  <members>
+    <member type="profile"
+            name="TESTMAP_profile.profile" />
+    <member type="xmi"
+            name="TESTMAP.xmi" />
+    <member type="pgml"
+            name="TESTMAP_ClassDiagram.pgml"
+            diagramclass="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram"
+            diagramname="Class Diagram" />
+    <member type="pgml"
+            name="TESTMAP_UseCaseDiagram.pgml"
+            diagramclass="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram"
+            diagramname="Use Case Diagram" />
+    <member type="todo"
+            name="TESTMAP.todo" />
+  </members>
+  <historyfile name="" />
+</argo>
