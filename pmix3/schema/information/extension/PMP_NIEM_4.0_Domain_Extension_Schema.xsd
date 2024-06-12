@@ -618,7 +618,7 @@ April 1, 2010 - Chad Garner, OSBP
 		<xsd:annotation>
 			<xsd:documentation>
         Holds telephone number and address of a person
-        Replaces PAT12, PAT13, PAT14, PAT15, PAT16, PAT17
+        Replaces PAT12, PAT13, PAT14, PAT15, PAT16, PAT17, PRE08
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
@@ -877,6 +877,26 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+    <xsd:complexType name="PersonDroppingOffRxType">
+        <xsd:complexContent>
+            <xsd:extension base="nc:PersonType">
+                <xsd:sequence>
+                    <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
+                    <xsd:element ref="pmp:RelationshipToPatientCode" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PersonPickingUpRxType">
+        <xsd:complexContent>
+            <xsd:extension base="nc:PersonType">
+                <xsd:sequence>
+                    <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
+                    <xsd:element ref="pmp:RelationshipToPatientCode" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
 	<xsd:complexType name="CompoundDrugIngredientType">
 		<xsd:annotation>
 			<xsd:documentation>Ingredients that make up a compound drug.
