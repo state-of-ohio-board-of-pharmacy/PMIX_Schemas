@@ -98,31 +98,24 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:element name="PersonIdentifier" abstract="true">
-		<!-- New enums?
-01 Military ID
-02 State Issued ID
-03 Unique System ID
-04 Permanent Resident Card (Green Card)
-05 Passport ID
-06 Driver’s License ID
-07 Social Security Number
-08 Tribal ID
-09 Vendor Specific (such as Bamboo Health, Experian,
-LexisNexis)
-10 Veterinary Patient Microchip Number
-11 Medicaid Recipient ID Number
-99 Other (Trading partner agreed upon ID, such as cardholder
-ID.)
--->
-		<xsd:annotation>
-			<xsd:documentation>
-        This property must be substituted by pmp:PersonDriverLicenseIdentifier, pmp:PersonMilitaryIdentifier, pmp:PersonOtherIdentifier,
-        pmp:PersonPassportIdentifier, pmp:PersonSocialSecurityNumberIdentifier, pmp:PersonStateIssuedIdentifier, pmp:PersonTribalIdentifier
-        or pmp:PersonUniqueSystemIdentifier
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
+    <xsd:element name="PersonIdentifier" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>
+                This property must be substituted by one of the following:
+                pmp:PersonDriverLicenseIdentifier,
+                pmp:PersonMilitaryIdentifier,
+                pmp:PersonOtherIdentifier,
+                pmp:PersonPassportIdentifier,
+                pmp:PersonSocialSecurityNumberIdentifier,
+                pmp:PersonStateIssuedIdentifier,
+                pmp:PersonTribalIdentifier,
+                pmp:PersonUniqueSystemIdentifier,
+                pmp:PersonPermanentResidentCardIdentifier,
+                pmp:PersonVeterinaryPatientMicrochipIdentifier,
+                pmp:PersonMedicaidRecipientIdentifier
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
 	<xsd:element name="PrescriptionReport" abstract="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -221,115 +214,139 @@ ID.)
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:element name="PersonPermanentResidentCardIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-				Identifies a person using their permanent resident card (green card).
-				This property and its subproperties replace
-				PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05.
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonVeterinaryPatientMicrochipIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-				Identifies a pet using their microchip number
-				This property and its subproperties replace
-				PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05.
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonMedicaidRecipientIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-				Identifies a person using their medicaid recipient identifier.
-				This property and its subproperties replace
-				PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05.
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonDriverLicenseIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identifies a person using their driver's license number and the entity which has jurisdiction over the licensee based on the license.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonMilitaryIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identifies a person using their military id number and the entity which has jurisdiction over the licensee based on the license.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonNationalHealthIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-				Identifies a person using their national health ID number and the entity which has jurisdiction over the ID.
-				This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonOtherIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identifies a person using an id number and the entity which has jurisdiction over the licensee based on the license.
-        This property and its subproperties replace
-				PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonPassportIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identifies a person using their passport number and the entity which has jurisdiction over the passport.
-        This property and its subproperties replace
-		PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonSocialSecurityNumberIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identifies a person using their social security number and the entity which has jurisdiction over the number.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonStateIssuedIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identifies a person using their state identification number and the entity which has jurisdiction over the identification.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonTribalIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identifies a person using their tribal id number and the entity which has jurisdiction over the id.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonUniqueSystemIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identifies a person using a unique system number and the entity which has jurisdiction over the number.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonVendorSystemIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-				Identifies a person using an ID number provided by a vendor and the vendor which has jurisdiction over the number.
-				This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
+    <xsd:element name="PersonPermanentResidentCardIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their permanent resident card (green card).
+                This property and its subproperties replace
+                PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonVeterinaryPatientMicrochipIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a pet using their microchip number
+                This property and its subproperties replace
+                PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonMedicaidRecipientIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their medicaid recipient identifier.
+                This property and its subproperties replace
+                PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonDriverLicenseIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their driver's license number and the entity which has jurisdiction over the
+                licensee based on the license.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonMilitaryIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their military id number and the entity which has jurisdiction over the
+                licensee based on the license.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonNationalHealthIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their national health ID number and the entity which has jurisdiction over the
+                ID.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonOtherIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using an id number and the entity which has jurisdiction over the licensee based on
+                the license.
+                This property and its subproperties replace
+                PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonPassportIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their passport number and the entity which has jurisdiction over the passport.
+                This property and its subproperties replace
+                PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonSocialSecurityNumberIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their social security number and the entity which has jurisdiction over the
+                number.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonStateIssuedIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their state identification number and the entity which has jurisdiction over
+                the identification.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonTribalIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their tribal id number and the entity which has jurisdiction over the id.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonUniqueSystemIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using a unique system number and the entity which has jurisdiction over the number.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonVendorSystemIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using an ID number provided by a vendor and the vendor which has jurisdiction over
+                the number.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
 	<xsd:element name="PharmacyReportingPrescriptionReport" type="pmp:PharmacyReportingPrescriptionReportType" substitutionGroup="pmp:PrescriptionReport">
 		<xsd:annotation>
 			<xsd:documentation>
