@@ -673,8 +673,13 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:element name="PrescriptionSoldDate" type="nc:DateType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
-        Date the prescription was received by the patient or patient's agent
-        Replaces DSP17
+            This field is used to determine the date the prescription was dispensed (sold to, picked up by, or otherwise left the pharmacy), not the date it was prepared.
+            This date could be captured from the point-of-sale (POS) system, if the pharmacy has a POS system,
+            and there is a bidirectional flow with the pharmacy management system in order to capture and report this date.
+            Or it could be captured and reported from a will-call management system, integrated
+            with the pharmacy management system.
+
+            Replaces DSP17
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
