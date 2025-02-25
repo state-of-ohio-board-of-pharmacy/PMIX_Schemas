@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://www.pmixpmp.org" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="pmp" targetNamespace="http://www.pmixpmp.org">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.pmixpmp.org" elementFormDefault="qualified" targetNamespace="http://www.pmixpmp.org" version="1.0">
+
+  <xs:element name="Acknowledgement" type="xs:boolean"/>
+
+  <xs:element name="AcknowledgementType">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="MetaData" type="tns:MetaDataType"/>
+
+  <xs:element name="MetaDataType" type="tns:MetaDataType"/>
+
+  <xs:element name="PMPStatus" type="tns:ResponseStatusCodeType"/>
+
+  <xs:element name="RequestType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RequestData" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ResponseStatus" type="tns:ResponseStatusType"/>
+
+  <xs:element name="ResponseType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ResponseData" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RoleType" type="xs:string"/>
+
+  <xs:element name="RoutingData" type="tns:RoutingDataType"/>
+
+  <xs:element name="RoutingDataType" type="tns:RoutingDataType"/>
+
+  <xs:complexType name="RoutingDataType">
+    <xs:sequence>
+      <xs:element name="RequestID" nillable="true" type="xs:string"/>
+      <xs:element name="RequestDateTime" type="xs:dateTime"/>
+      <xs:element name="RequestingState" nillable="true" type="xs:string"/>
+      <xs:element name="StateRequestID" nillable="true" type="xs:string"/>
+      <xs:element name="DisclosingState" nillable="true" type="xs:string"/>
+      <xs:element name="StateDisclosureID" nillable="true" type="xs:string"/>
+      <xs:element name="HubRequestID" nillable="true" type="xs:string"/>
+      <xs:element name="HubDisclosureID" nillable="true" type="xs:string"/>
+      <xs:element name="HubUsedIdentification" nillable="true" type="tns:HubIdentificationType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HubIdentificationType">
+    <xs:sequence>
+      <xs:element name="HubIdentificationID" nillable="true" type="xs:string"/>
+      <xs:element name="HubIdentificationCode" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MetaDataType">
+    <xs:sequence>
+      <xs:element name="Requestor" nillable="true" type="tns:RequestorType"/>
+      <xs:element name="RequestorOrganization" nillable="true" type="tns:RequestorOrganizationType"/>
+      <xs:element name="RoutingData" nillable="true" type="tns:RoutingDataType"/>
+      <xs:element name="Version" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RequestorType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RequestorRole" type="xs:string"/>
+      <xs:element minOccurs="0" name="RequestorGivenName" type="xs:string"/>
+      <xs:element minOccurs="0" name="RequestorSurName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="RequestorIdentification" nillable="true" type="tns:IdentificationType"/>
+      <xs:element minOccurs="0" name="RequestorFacility" type="tns:RequestorFacilityType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IdentificationType">
+    <xs:sequence>
+      <xs:element name="IdentificationID" nillable="true" type="xs:string"/>
+      <xs:element name="IdentificationCategoryCode" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RequestorOrganizationType">
+    <xs:sequence>
+      <xs:element name="RequestorOrganizationName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ResponseStatusType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Status" nillable="true" type="tns:StatusType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="StatusType">
+    <xs:sequence>
+      <xs:element name="DisclosingState" nillable="true" type="xs:string"/>
+      <xs:element name="PMPStatus" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RequestorFacilityType">
+    <xs:sequence>
+      <xs:element name="RequestorOrganizationName" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="FacilityIdentification" nillable="true" type="tns:IdentificationType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="HubIdentificationCodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RxCheck"/>
+      <xs:enumeration value="PMPi"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="IdentificationCategoryCodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DEA"/>
+      <xs:enumeration value="NPI"/>
+      <xs:enumeration value="State License"/>
+      <xs:enumeration value="Other"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ResponseStatusCodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Deferred"/>
+      <xs:enumeration value="NotFound"/>
+      <xs:enumeration value="Provided"/>
+      <xs:enumeration value="NotSupported"/>
+      <xs:enumeration value="Error"/>
+      <xs:enumeration value="Disallowed"/>
+      <xs:enumeration value="VersionMismatch"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" version="1.0">
+
+  <xs:element name="QName" type="xs:QName"/>
+
+  <xs:element name="anyType" type="xs:anyType"/>
+
+  <xs:element name="anyURI" type="xs:string"/>
+
+  <xs:element name="base64Binary" type="xs:base64Binary"/>
+
+  <xs:element name="boolean" type="xs:boolean"/>
+
+  <xs:element name="byte" type="xs:byte"/>
+
+  <xs:element name="char" type="xs:int"/>
+
+  <xs:element name="dateTime" type="xs:anySimpleType"/>
+
+  <xs:element name="decimal" type="xs:decimal"/>
+
+  <xs:element name="double" type="xs:double"/>
+
+  <xs:element name="duration" type="xs:duration"/>
+
+  <xs:element name="float" type="xs:float"/>
+
+  <xs:element name="guid" type="xs:string"/>
+
+  <xs:element name="int" type="xs:int"/>
+
+  <xs:element name="long" type="xs:long"/>
+
+  <xs:element name="short" type="xs:short"/>
+
+  <xs:element name="string" type="xs:string"/>
+
+  <xs:element name="unsignedByte" type="xs:short"/>
+
+  <xs:element name="unsignedInt" type="xs:long"/>
+
+  <xs:element name="unsignedLong" type="xs:integer"/>
+
+  <xs:element name="unsignedShort" type="xs:int"/>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ReceiveDeferredPrescriptionDrugHistory">
+    <wsdl:part element="tns:ResponseType" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:ResponseStatus" name="ResponseStatus">
+    </wsdl:part>
+    <wsdl:part element="tns:RoutingData" name="RoutingData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProvidePatientPicklist">
+    <wsdl:part element="tns:RequestType" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:MetaData" name="MetaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReceiveDeferredPrescriptionDrugHistoryResponse">
+    <wsdl:part element="tns:AcknowledgementType" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:Acknowledgement" name="Acknowledgement">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProvidePrescriptionDrugHistoryResponse">
+    <wsdl:part element="tns:ResponseType" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:ResponseStatus" name="ResponseStatus">
+    </wsdl:part>
+    <wsdl:part element="tns:RoutingData" name="RoutingData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProvidePatientPicklistResponse">
+    <wsdl:part element="tns:ResponseType" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:ResponseStatus" name="ResponseStatus">
+    </wsdl:part>
+    <wsdl:part element="tns:RoutingData" name="RoutingData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProvidePrescriptionDrugHistory">
+    <wsdl:part element="tns:RequestType" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:MetaData" name="MetaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="pmp">
+    <wsdl:operation name="ReceiveDeferredPrescriptionDrugHistory" parameterOrder="parameters ResponseStatus RoutingData Acknowledgement">
+      <wsdl:input message="tns:ReceiveDeferredPrescriptionDrugHistory" name="ReceiveDeferredPrescriptionDrugHistory">
+    </wsdl:input>
+      <wsdl:output message="tns:ReceiveDeferredPrescriptionDrugHistoryResponse" name="ReceiveDeferredPrescriptionDrugHistoryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvidePatientPicklist" parameterOrder="parameters MetaData ResponseStatus RoutingData">
+      <wsdl:input message="tns:ProvidePatientPicklist" name="ProvidePatientPicklist">
+    </wsdl:input>
+      <wsdl:output message="tns:ProvidePatientPicklistResponse" name="ProvidePatientPicklistResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvidePrescriptionDrugHistory" parameterOrder="parameters MetaData ResponseStatus RoutingData">
+      <wsdl:input message="tns:ProvidePrescriptionDrugHistory" name="ProvidePrescriptionDrugHistory">
+    </wsdl:input>
+      <wsdl:output message="tns:ProvidePrescriptionDrugHistoryResponse" name="ProvidePrescriptionDrugHistoryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="pmpSoapBinding" type="tns:pmp">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsaw:UsingAddressing xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" wsdl:required="true"/>
+    <wsp:PolicyReference URI="#pmpSoapBinding_WSAM_Addressing_Policy"/>
+    <wsdl:operation name="ReceiveDeferredPrescriptionDrugHistory">
+      <soap12:operation soapAction="http://www.pmixpmp.org/pmp/ReceiveDeferredPrescriptionDrugHistory" style="document"/>
+      <wsdl:input name="ReceiveDeferredPrescriptionDrugHistory">
+        <soap12:header message="tns:ReceiveDeferredPrescriptionDrugHistory" part="ResponseStatus" use="literal">
+        </soap12:header>
+        <soap12:header message="tns:ReceiveDeferredPrescriptionDrugHistory" part="RoutingData" use="literal">
+        </soap12:header>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ReceiveDeferredPrescriptionDrugHistoryResponse">
+        <soap12:header message="tns:ReceiveDeferredPrescriptionDrugHistoryResponse" part="Acknowledgement" use="literal">
+        </soap12:header>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvidePatientPicklist">
+      <soap12:operation soapAction="http://www.pmixpmp.org/pmp/ProvidePatientPicklist" style="document"/>
+      <wsdl:input name="ProvidePatientPicklist">
+        <soap12:header message="tns:ProvidePatientPicklist" part="MetaData" use="literal">
+        </soap12:header>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ProvidePatientPicklistResponse">
+        <soap12:header message="tns:ProvidePatientPicklistResponse" part="ResponseStatus" use="literal">
+        </soap12:header>
+        <soap12:header message="tns:ProvidePatientPicklistResponse" part="RoutingData" use="literal">
+        </soap12:header>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvidePrescriptionDrugHistory">
+      <soap12:operation soapAction="http://www.pmixpmp.org/pmp/ProvidePrescriptionDrugHistory" style="document"/>
+      <wsdl:input name="ProvidePrescriptionDrugHistory">
+        <soap12:header message="tns:ProvidePrescriptionDrugHistory" part="MetaData" use="literal">
+        </soap12:header>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ProvidePrescriptionDrugHistoryResponse">
+        <soap12:header message="tns:ProvidePrescriptionDrugHistoryResponse" part="ResponseStatus" use="literal">
+        </soap12:header>
+        <soap12:header message="tns:ProvidePrescriptionDrugHistoryResponse" part="RoutingData" use="literal">
+        </soap12:header>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="pmp">
+    <wsdl:port binding="tns:pmpSoapBinding" name="WsBasicProfile">
+      <soap12:address location="http://192.168.168.170:16280/rxoutbound/service/pmix2"/>
+    </wsdl:port>
+  </wsdl:service>
+    <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="pmpSoapBinding_WSAM_Addressing_Policy"><wsam:Addressing xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"><wsp:Policy/></wsam:Addressing></wsp:Policy>
+</wsdl:definitions>
