@@ -237,6 +237,7 @@
 
 			<xs:element name="PMPStatus" type="tns:ResponseStatusCodeType" nillable="true"/>
 
+			<xs:element name="PMPStatusDescription" type="xs:string" nillable="true"/>
 		</xs:sequence>
 
 	</xs:complexType>
