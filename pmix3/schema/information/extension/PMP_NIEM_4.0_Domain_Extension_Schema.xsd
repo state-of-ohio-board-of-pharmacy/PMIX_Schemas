@@ -809,6 +809,8 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:PatientLocationCode" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientNameOfAnimalText" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientAlert" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PatientPreferredOrAliasFirstName" minOccurs="0" maxOccurs="1" />
+					<xsd:element ref="pmp:PatientPreferredOrAliasLastName" minOccurs="0" maxOccurs="1" />
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
