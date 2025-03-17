@@ -86,6 +86,11 @@
   <xs:import namespace="http://release.niem.gov/niem/codes/fbi_ncic/4.2/" schemaLocation="../../../codes/fbi_ncic/4.2/fbi_ncic.xsd"/>
   <xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/" schemaLocation="../../../niem-core/4.0/niem-core.xsd"/>
   <xs:import namespace="http://release.niem.gov/niem/structures/4.0/" schemaLocation="../../../utility/structures/4.0/structures.xsd"/>
+  <xs:element name="PersonRaceCode" type="ncic:RACECodeType" substitutionGroup="nc:PersonRaceAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A classification of a person based on factors such as geographical locations and genetics.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:element name="PersonSexCode" type="ncic:SEXCodeType" substitutionGroup="nc:PersonSexAbstract" nillable="true">
     <xs:annotation>
       <xs:documentation>A gender or sex of a person.</xs:documentation>

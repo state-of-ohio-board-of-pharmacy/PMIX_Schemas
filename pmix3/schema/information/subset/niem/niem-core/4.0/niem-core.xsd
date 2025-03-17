@@ -186,6 +186,7 @@
         <xs:sequence>
           <xs:element ref="nc:PersonBirthDate" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="nc:PersonName" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:PersonRaceAbstract" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="nc:PersonSexAbstract" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="nc:PersonSSNIdentification" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
@@ -422,6 +423,16 @@
   <xs:element name="PersonNameSuffixText" type="nc:TextType" nillable="true">
     <xs:annotation>
       <xs:documentation>A term appended after the family name that qualifies the name.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonRaceAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for a classification of a person based on factors such as geographical locations and genetics.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonRaceText" type="nc:TextType" substitutionGroup="nc:PersonRaceAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A classification of a person based on factors such as geographical locations and genetics.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="PersonSexAbstract" abstract="true">

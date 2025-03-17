@@ -100,4 +100,46 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+  <xs:simpleType name="RACECodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for 3 - Race (RAC), Protected Person Race (PPR), and Person with Information Race (PIR) Field Codes</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="A">
+        <xs:annotation>
+          <xs:documentation>ASIAN OR PACIFIC ISLANDER - A PERSON HAVING ORIGINS IN ANY OF THE ORIGINAL PEOPLES OF THE FAR EAST, SOUTHEAST ASIA, THE INDIAN SUBCONTINENT OR THE PACIFIC ISLANDS.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="B">
+        <xs:annotation>
+          <xs:documentation>BLACK - A PERSON HAVING ORIGINS IN ANY OF THE BLACK RACIAL GROUPS OF AFRICA.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="I">
+        <xs:annotation>
+          <xs:documentation>AMERICAN INDIAN OR ALASKAN NATIVE - A PERSON HAVING ORIGINS IN ANY OF THE ORIGINAL PEOPLES OF THE AMERICAS AND MAINTAINING CULTURAL IDENTIFICATION THROUGH TRIBAL AFFILIATIONS OR COMMUNITY RECOGNITION.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="U">
+        <xs:annotation>
+          <xs:documentation>UNKNOWN.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="W">
+        <xs:annotation>
+          <xs:documentation>WHITE - A PERSON HAVING ORIGINS IN ANY OF THE ORIGINAL PEOPLES OF EUROPE, NORTH AFRICA, OR MIDDLE EAST.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="RACECodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for 3 - Race (RAC), Protected Person Race (PPR), and Person with Information Race (PIR) Field Codes</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ncic:RACECodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
 </xs:schema>
