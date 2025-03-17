@@ -551,6 +551,20 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="PatientPreferredOrAliasLastName" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				ASAP 5 field PAT24
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PatientPreferredOrAliasFirstName" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				ASAP 5 field PAT25
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="Person" type="nc:PersonType"/>
 	<xsd:element name="PersonPrimaryContactInformation" type="nc:ContactInformationType">
 		<xsd:annotation>
