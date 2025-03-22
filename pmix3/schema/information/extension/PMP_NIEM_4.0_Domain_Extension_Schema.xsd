@@ -413,6 +413,14 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="RemainingQuantity" type="xsd:nonNegativeInteger" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+				Total quantity remaining for prescription.
+				DSP29
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="DrugDosageUnitsCode" type="pmpcd:DrugDosageUnitsCodeType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -581,6 +589,7 @@ April 1, 2010 - Chad Garner, OSBP
 			</xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+
 	<xsd:element name="PrescriberDEANumberSuffixText" type="nc:TextType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -1007,6 +1016,7 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:PrescriptionDrug" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:RefillsAuthorizedCount" minOccurs="1" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:DispensedQuantity" minOccurs="1" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:RemainingQuantity" minOccurs="1" maxOccurs="1" />
 					<xsd:element ref="pmp:DaysSupplyCount" minOccurs="1" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:DrugDosageUnitsCode" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:MethodOfPaymentCode" minOccurs="0" maxOccurs="unbounded"/>
