@@ -544,7 +544,7 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
 	</xsd:complexType>
 	<xsd:simpleType name="OpioidTreatmentCategoryCodeSimpleType">
 		<xsd:annotation>
-			<xsd:documentation>A code identifying the reason for an opioid prescription.
+			<xsd:documentation>A code identifying the reason for an opioid prescription.
 			</xsd:documentation>
 			<xsd:appinfo>
 				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
@@ -615,7 +615,7 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
 	</xsd:simpleType>
 	<xsd:complexType name="OpioidTreatmentCategoryCodeType">
 		<xsd:annotation>
-			<xsd:documentation>A code identifying the reason for an opioid prescription. 
+			<xsd:documentation>A code identifying the reason for an opioid prescription.
 			</xsd:documentation>
 			<xsd:appinfo>
 				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
