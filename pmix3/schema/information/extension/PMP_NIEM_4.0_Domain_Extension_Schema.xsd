@@ -413,14 +413,6 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:element name="RemainingQuantity" type="xsd:nonNegativeInteger" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				Total quantity remaining for prescription.
-				DSP29
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
 	<xsd:element name="DrugDosageUnitsCode" type="pmpcd:DrugDosageUnitsCodeType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -529,7 +521,7 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:element name="OpioidTreatmentCategoryCode" type="pmpcd:OpioidTreatmentCategoryCodeType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
-				The reason for an opioid prescription...
+				The reason for an opioid prescription..
 				Replaces DSP24
 			</xsd:documentation>
 		</xsd:annotation>
@@ -559,20 +551,6 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:element name="PatientPreferredOrAliasLastName" type="nc:TextType" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				ASAP 5 field PAT24
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PatientPreferredOrAliasFirstName" type="nc:TextType" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				ASAP 5 field PAT25
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
 	<xsd:element name="Person" type="nc:PersonType"/>
 	<xsd:element name="PersonPrimaryContactInformation" type="nc:ContactInformationType">
 		<xsd:annotation>
@@ -589,7 +567,6 @@ April 1, 2010 - Chad Garner, OSBP
 			</xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-
 	<xsd:element name="PrescriberDEANumberSuffixText" type="nc:TextType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -634,33 +611,9 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:element name="PrescriptionSoldDate" type="nc:DateType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
-				Date the prescription was received by the patient or patient's agent
-				Replaces DSP17
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="TimeWritten" type="xsd:dateTime" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				A precise time a prescription was written.
-				DSP26
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="TimeFilled" type="xsd:dateTime" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				A precise time a prescription was filled.
-				DSP27
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="TimeSold" type="xsd:dateTime" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				A precise time a prescription was sold.
-				DSP28
-			</xsd:documentation>
+        Date the prescription was received by the patient or patient's agent
+        Replaces DSP17
+      </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
 	<xsd:element name="PrescriptionWrittenDate" type="nc:DateType" nillable="true">
@@ -842,8 +795,6 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:PatientLocationCode" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientNameOfAnimalText" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientAlert" minOccurs="0" maxOccurs="unbounded"/>
-					<xsd:element ref="pmp:PatientPreferredOrAliasFirstName" minOccurs="0" maxOccurs="1" />
-					<xsd:element ref="pmp:PatientPreferredOrAliasLastName" minOccurs="0" maxOccurs="1" />
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
@@ -923,9 +874,8 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:complexType name="PrescriptionDrugType">
 		<xsd:complexContent>
 			<xsd:annotation>
-				<xsd:documentation>
-					Type of medicinal treatment made of organic or inorganic compounds that can be legally ordered for a patient's care.
-				</xsd:documentation>
+				<xsd:documentation>Type of medicinal treatment made of organic or inorganic compounds  that can be legally ordered for a patient's care  .
+			</xsd:documentation>
 			</xsd:annotation>
 			<xsd:extension base="s:ObjectType">
 				<xsd:sequence>
@@ -1016,7 +966,6 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:PrescriptionDrug" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:RefillsAuthorizedCount" minOccurs="1" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:DispensedQuantity" minOccurs="1" maxOccurs="unbounded"/>
-					<xsd:element ref="pmp:RemainingQuantity" minOccurs="1" maxOccurs="1" />
 					<xsd:element ref="pmp:DaysSupplyCount" minOccurs="1" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:DrugDosageUnitsCode" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:MethodOfPaymentCode" minOccurs="0" maxOccurs="unbounded"/>
@@ -1028,9 +977,6 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:ICD-10DiagnosticCodeText" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:OpioidTreatmentCategoryCode" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:PrescriptionSoldDate" minOccurs="0" maxOccurs="unbounded"/>
-					<xsd:element ref="pmp:TimeWritten" minOccurs="0" maxOccurs="1" />
-					<xsd:element ref="pmp:TimeFilled" minOccurs="0" maxOccurs="1" />
-					<xsd:element ref="pmp:TimeSold" minOccurs="0" maxOccurs="1" />
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
