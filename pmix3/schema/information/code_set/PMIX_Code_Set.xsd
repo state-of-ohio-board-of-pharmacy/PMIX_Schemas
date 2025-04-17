@@ -190,21 +190,6 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
 					<xsd:documentation>Transferred/Forwarded Prescription</xsd:documentation>
 				</xsd:annotation>
 			</xsd:enumeration>
-			<xsd:enumeration value="07">
-				<xsd:annotation>
-					<xsd:documentation>Order (Administered at Prescriber Location)</xsd:documentation>
-				</xsd:annotation>
-			</xsd:enumeration>
-			<xsd:enumeration value="08">
-				<xsd:annotation>
-					<xsd:documentation>Dispensed from a Prescriber Location</xsd:documentation>
-				</xsd:annotation>
-			</xsd:enumeration>
-			<xsd:enumeration value="09">
-				<xsd:annotation>
-					<xsd:documentation>Standing Order/Protocol</xsd:documentation>
-				</xsd:annotation>
-			</xsd:enumeration>
 			<xsd:enumeration value="99">
 				<xsd:annotation>
 					<xsd:documentation>Other</xsd:documentation>
