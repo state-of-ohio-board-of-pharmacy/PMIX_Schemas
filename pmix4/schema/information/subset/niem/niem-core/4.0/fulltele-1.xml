@@ -1,0 +1,13 @@
+<ns:FullTelephoneNumber structures:id="string" structures:ref="string"
+                        structures:uri="http://www.any.com/carcere/iussus" structures:metadata="string"
+                        structures:relationshipMetadata="string string"
+                        xmlns:ns="http://release.niem.gov/niem/niem-core/4.0/"
+                        xmlns:structures="http://release.niem.gov/niem/structures/4.0/">
+    <!--Zero or more repetitions:-->
+    <structures:ObjectAugmentationPoint>anyType</structures:ObjectAugmentationPoint>
+    <!--Zero or more repetitions:-->
+    <ns:TelephoneNumberFullID structures:id="string" structures:ref="string"
+                              structures:uri="http://www.test.com/dedit/iaculata" structures:metadata="string"
+                              structures:relationshipMetadata="string string">string
+    </ns:TelephoneNumberFullID>
+</ns:FullTelephoneNumber>
