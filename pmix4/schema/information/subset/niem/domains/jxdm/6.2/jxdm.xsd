@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://release.niem.gov/niem/domains/jxdm/6.2/" version="1" xml:lang="en-US" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/5.0/#ReferenceSchemaDocument" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ncic="http://release.niem.gov/niem/codes/fbi_ncic/4.2/" xmlns:ucr="http://release.niem.gov/niem/codes/fbi_ucr/4.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:j="http://release.niem.gov/niem/domains/jxdm/6.2/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <xs:annotation>
+    <xs:documentation>Justice</xs:documentation>
+    <xs:appinfo>
+      <appinfo:LocalTerm term="OCA" literal="Originating Case Agency"/>
+      <appinfo:LocalTerm term="ACD" literal="AAMVA Code Dictionary"/>
+      <appinfo:LocalTerm term="DMH" literal="Department of Mental Health"/>
+      <appinfo:LocalTerm term="MHSDS" literal="Mental Health Services Delivery System"/>
+      <appinfo:LocalTerm term="CJIS" literal="Criminal Justice Information System"/>
+      <appinfo:LocalTerm term="NCMEC" literal="National Center for Missing &amp; Exploited Children"/>
+      <appinfo:LocalTerm term="HRSO" literal="high risk sex offender"/>
+      <appinfo:LocalTerm term="TCN" literal="Transaction Control Number"/>
+      <appinfo:LocalTerm term="GVWR" literal="gross vehicle weight rating"/>
+      <appinfo:LocalTerm term="AAMVA" literal="The American Association of Motor Vehicle Administrators"/>
+      <appinfo:LocalTerm term="MDO" literal="mentally disordered offender"/>
+      <appinfo:LocalTerm term="MCMIS" literal="Motor Carrier Management Information System"/>
+      <appinfo:LocalTerm term="BPH" literal="Board of Parole Hearings"/>
+      <appinfo:LocalTerm term="TCD" literal="traffic control device"/>
+      <appinfo:LocalTerm term="FCN" literal="file control number"/>
+      <appinfo:LocalTerm term="COMPAS" literal="Correctional Offender Management Profiling for Alternative Sanctions"/>
+      <appinfo:LocalTerm term="NCIC" literal="National Crime Information Center"/>
+      <appinfo:LocalTerm term="PRISM" literal="Performance and Registration Information Systems Management"/>
+      <appinfo:LocalTerm term="VINA" literal="Vehicle Identification Number Analysis"/>
+      <appinfo:LocalTerm term="AFIS" literal="Automated Fingerprint Identification System"/>
+      <appinfo:LocalTerm term="USDOT" literal="United States Department of Transportation"/>
+      <appinfo:LocalTerm term="APCO" literal="Association of Public-Safety Communications Officials (APCO) - International, Inc."/>
+      <appinfo:LocalTerm term="NLETS" literal="National Law Enforcement Telecommunication Systems"/>
+      <appinfo:LocalTerm term="NIBRS" literal="National Incident Based Reporting System"/>
+      <appinfo:LocalTerm term="MCO" literal="Manufacturer's certificate of origin"/>
+      <appinfo:LocalTerm term="TripleI" literal="III - Interstate Identification Index system"/>
+      <appinfo:LocalTerm term="MMUCC" literal="Model Minimum Uniform Crash Criteria"/>
+      <appinfo:LocalTerm term="SAFESTAT" literal="Safety Status Measurement System"/>
+      <appinfo:LocalTerm term="XRay" literal="X-Ray"/>
+      <appinfo:LocalTerm term="ISSN" literal="International Standard Serial Number"/>
+      <appinfo:LocalTerm term="TYPA" literal="(Article) Type"/>
+      <appinfo:LocalTerm term="UCR" literal="Uniform Crime Reporting"/>
+      <appinfo:LocalTerm term="ICC" literal="Interstate Commerce Commission"/>
+      <appinfo:LocalTerm term="DEA" literal="Drug Enforcement Administration"/>
+      <appinfo:LocalTerm term="EMS" literal="Emergency Medical Service"/>
+      <appinfo:LocalTerm term="Amber" literal="America's Missing: Broadcast Emergency Response"/>
+      <appinfo:LocalTerm term="LIS" literal="License Plate State"/>
+      <appinfo:LocalTerm term="FIPS" literal="Federal Information Processing Standards"/>
+      <appinfo:LocalTerm term="BOP" literal="Bureau of Prisons"/>
+      <appinfo:LocalTerm term="HME" literal="Hazardous Material Endorsement"/>
+      <appinfo:LocalTerm term="Brady" literal="Brady Law"/>
+      <appinfo:LocalTerm term="CHRI" literal="Criminal History Record Information"/>
+      <appinfo:LocalTerm term="Alpha" definition="Letter(s)"/>
+      <appinfo:LocalTerm term="XRays" literal="X-Rays"/>
+      <appinfo:LocalTerm term="VICAP" literal="Violent Criminal Apprehension Program"/>
+      <appinfo:LocalTerm term="DOT" literal="Department of Transportation"/>
+      <appinfo:LocalTerm term="NICB" literal="National Insurance Crime Bureau"/>
+      <appinfo:LocalTerm term="GDEP" literal="Geographic-Drug Enforcement Program"/>
+      <appinfo:LocalTerm term="CMV" literal="Commercial Motor Vehicle"/>
+      <appinfo:LocalTerm term="SMT" literal="Scars, Marks, Tattoos, and Other Characteristics"/>
+      <appinfo:LocalTerm term="TYPO" literal="(ORI) Type"/>
+      <appinfo:LocalTerm term="FBI" literal="Federal Bureau of Investigation"/>
+      <appinfo:LocalTerm term="MCSIP" literal="Motor Carrier Safety Improvement Process"/>
+      <appinfo:LocalTerm term="ANSID20" literal="The Data Dictionary for Traffic Record Systems, maintained by AAMVA, the American Association of Motor Vehicle Administrators"/>
+      <appinfo:LocalTerm term="Multi" literal="Multiple"/>
+      <appinfo:LocalTerm term="POST" literal="Peace Official Standards and Training"/>
+      <appinfo:LocalTerm term="NDEx" literal="National Data Exchange"/>
+      <appinfo:LocalTerm term="REALID" definition="Public Law 109&#x2013;13, 119 Statute 302, enacted May 11, 2005, was an Act of Congress that modified U.S. federal law pertaining to security, authentication, and issuance procedures standards for the state driver's licenses and identification (ID) cards, as well as various immigration issues pertaining to terrorism."/>
+      <appinfo:LocalTerm term="JABS" literal="JABS" definition="Joint Automated Booking System"/>
+      <appinfo:LocalTerm term="IBIS" literal="Integrated Ballistic Identification System"/>
+      <appinfo:LocalTerm term="LEOKA" literal="Law Enforcement Officer Killed or Assaulted"/>
+      <appinfo:LocalTerm term="LSTA" definition="State/Country Index"/>
+      <appinfo:LocalTerm term="FFLID" literal="federal firearms license"/>
+      <appinfo:LocalTerm term="NDEX" literal="National Data Exchange"/>
+      <appinfo:LocalTerm term="ORI" definition="A nine-character identifier assigned by the FBI Criminal Justice Information Systems (CJIS) staff to an organization, which must have met the established qualifying criteria for ORI assignment to identify the agency in transactions on CJIS Systems."/>
+      <appinfo:LocalTerm term="VIN" literal="Vehicle Identification Number"/>
+      <appinfo:LocalTerm term="IAFIS" literal="Integrated Automated Fingerprint Identification System"/>
+      <appinfo:LocalTerm term="TYP" literal="(Firearm) Type"/>
+      <appinfo:LocalTerm term="HazMat" literal="Hazardous Materials"/>
+      <appinfo:LocalTerm term="CDL" literal="Commercial Driver's License"/>
+      <appinfo:LocalTerm term="MACR" literal="Monthly Arrest and Citation Register"/>
+      <appinfo:LocalTerm term="RES" literal="Registration State"/>
+      <appinfo:LocalTerm term="USMS" literal="United States Marshal Service"/>
+      <appinfo:LocalTerm term="MO" literal="Modus Operandi"/>
+      <appinfo:LocalTerm term="ISBN" literal="International Standard Book Number"/>
+      <appinfo:LocalTerm term="DHS" literal="Department of Homeland Security"/>
+      <appinfo:LocalTerm term="CODIS" literal="Combined DNA Index System"/>
+      <appinfo:LocalTerm term="DNA" literal="Deoxyribonucleic acid"/>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:import namespace="http://release.niem.gov/niem/codes/fbi_ncic/4.2/" schemaLocation="../../../codes/fbi_ncic/4.2/fbi_ncic.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/" schemaLocation="../../../niem-core/4.0/niem-core.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/structures/4.0/" schemaLocation="../../../utility/structures/4.0/structures.xsd"/>
+  <xs:simpleType name="PersonEthnicityCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a code set identifying a cultural lineage of a person.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="African">
+        <xs:annotation>
+          <xs:documentation>African</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Alaska Native">
+        <xs:annotation>
+          <xs:documentation>Alaska Native</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="American Indian">
+        <xs:annotation>
+          <xs:documentation>American Indian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Asian Indian">
+        <xs:annotation>
+          <xs:documentation>Asian Indian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Black Or African American">
+        <xs:annotation>
+          <xs:documentation>Black Or African American</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cambodian">
+        <xs:annotation>
+          <xs:documentation>Cambodian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Central American">
+        <xs:annotation>
+          <xs:documentation>Central American</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Chinese">
+        <xs:annotation>
+          <xs:documentation>Chinese</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="European">
+        <xs:annotation>
+          <xs:documentation>European</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Filipino">
+        <xs:annotation>
+          <xs:documentation>Filipino</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Great Britain">
+        <xs:annotation>
+          <xs:documentation>Great Britain</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Haitian">
+        <xs:annotation>
+          <xs:documentation>Haitian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hispanic Or Latino">
+        <xs:annotation>
+          <xs:documentation>Hispanic Or Latino</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Indonesian">
+        <xs:annotation>
+          <xs:documentation>Indonesian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Japanese">
+        <xs:annotation>
+          <xs:documentation>Japanese</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Korean">
+        <xs:annotation>
+          <xs:documentation>Korean</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Malaysian">
+        <xs:annotation>
+          <xs:documentation>Malaysian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Mexican">
+        <xs:annotation>
+          <xs:documentation>Mexican</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Middle Eastern">
+        <xs:annotation>
+          <xs:documentation>Middle Eastern</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Mixed">
+        <xs:annotation>
+          <xs:documentation>Mixed</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Native Hawaiian">
+        <xs:annotation>
+          <xs:documentation>Native Hawaiian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Not Hispanic Or Latino">
+        <xs:annotation>
+          <xs:documentation>Not Hispanic Or Latino</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Pacific Islander">
+        <xs:annotation>
+          <xs:documentation>Pacific Islander</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Pakastani">
+        <xs:annotation>
+          <xs:documentation>Pakastani</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Polynesian">
+        <xs:annotation>
+          <xs:documentation>Polynesian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Puerto Rican">
+        <xs:annotation>
+          <xs:documentation>Puerto Rican</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Samoan">
+        <xs:annotation>
+          <xs:documentation>Samoan</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Slavic">
+        <xs:annotation>
+          <xs:documentation>Slavic</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="South American">
+        <xs:annotation>
+          <xs:documentation>South American</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Spanish Origin">
+        <xs:annotation>
+          <xs:documentation>Spanish Origin</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Thai">
+        <xs:annotation>
+          <xs:documentation>Thai</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:documentation>Unknown</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Vietnamese">
+        <xs:annotation>
+          <xs:documentation>Vietnamese</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="White American">
+        <xs:annotation>
+          <xs:documentation>White American</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PersonEthnicityCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for a code set identifying a cultural lineage of a person.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="j:PersonEthnicityCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:element name="PersonEthnicityCode" type="ucr:EthnicityCodeType" substitutionGroup="nc:PersonEthnicityAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A cultural lineage of a person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEthnicityRapSheetCode" type="j:PersonEthnicityCodeType" substitutionGroup="nc:PersonEthnicityAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A code set identifying a cultural lineage of a person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonRaceCode" type="ncic:RACECodeType" substitutionGroup="nc:PersonRaceAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A classification of a person based on factors such as geographical locations and genetics.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonSexCode" type="ncic:SEXCodeType" substitutionGroup="nc:PersonSexAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A gender or sex of a person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>
