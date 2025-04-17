@@ -1,0 +1,5 @@
+<ns:PersonSexCode structures:id="string" structures:ref="string" structures:uri="http://www.company.edu/turbine/montis"
+                  structures:metadata="string" structures:relationshipMetadata="string string"
+                  xmlns:ns="http://release.niem.gov/niem/domains/jxdm/6.2/"
+                  xmlns:structures="http://release.niem.gov/niem/structures/4.0/">F
+</ns:PersonSexCode>
