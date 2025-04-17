@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+IJIS Prescription (Drug) Monitoring Program (PMP) Information Exchange (PMIX) IEPD
+Request-Response Service Schema based on NIEM 2.0 standard
+
+Copyright (C) IJIS Institute (2006). All Rights Reserved.
+
+This document and translations of it may be copied and furnished to others, and
+derivative works that comment on or otherwise explain it or assist in its
+implementation may be prepared, copied, published and distributed, in whole or
+in part, without restriction of any kind, provided that the above copyright
+notice and this paragraph are included on all such copies and derivative works.
+However, this document itself may not be modified in any way, such as by
+removing the copyright notice or references to the IJIS Institute, except as
+needed for the purpose of developing IJIS specifications, or as required to
+translate it into languages other than English.
+
+The limited permissions granted above are perpetual and will not be revoked by
+the IJIS Insitute or its successors or assigns.
+
+This document and the information contained herein is provided on an "AS IS"
+basis and IJIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT
+INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR
+A PARTICULAR PURPOSE.
+
+===============================================================================
+
+Document Type: Information Exchange Package Documentation (IEPD) XML Schema
+
+Modification History:
+August 15,2007- Winfield Wagner, Crossflo Systems - Initial Draft
+...edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com)
+
+April 8, 2009 - Chad Garner, Ohio State Board of Pharmacy
+...Clean Up
+
+March 31, 2010 - Chad Garner, OSBP
+...changed from RequestResponse to PMPPrescription report, uses explicit substitution to allow the schema to be used for PMP Prescription
+exchange or for pharmacies to report to PMPs - both send prescription reports, but pharmacy reporting requires some additional document
+level elements.
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+	xmlns:niem-xsd="http://release.niem.gov/niem/proxy/xsd/4.0/"
+	xmlns:i="http://release.niem.gov/niem/appinfo/4.0/"
+	xmlns:pmp="http://pmixpmp.org/niem/4.0/extension"
+	xmlns:pmix="http://pmixpmp.org/niem/4.0/"
+	xmlns:s="http://release.niem.gov/niem/structures/4.0/"
+	targetNamespace="http://pmixpmp.org/niem/4.0/"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation>NIEM PMP domain extension schema and other support and structure schemas</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://release.niem.gov/niem/structures/4.0/" schemaLocation="../subset/niem/utility/structures/4.0/structures.xsd"/>
+	<xsd:import namespace="http://release.niem.gov/niem/appinfo/4.0/" schemaLocation="../subset/niem/utility/appinfo/4.0/appinfo.xsd"/>
+	<xsd:import namespace="http://release.niem.gov/niem/proxy/xsd/4.0/" schemaLocation="../subset/niem/proxy/xsd/4.0/xs.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation>NIEM core subset schema </xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://release.niem.gov/niem/niem-core/4.0/" schemaLocation="../subset/niem/niem-core/4.0/niem-core.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation>NIEM core subset schema </xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://pmixpmp.org/niem/4.0/extension" schemaLocation="../extension/PMP_NIEM_4.0_Domain_Extension_Schema.xsd"/>
+	<xsd:complexType name="PMPPrescriptionReportType">
+		<xsd:annotation>
+			<xsd:documentation>The schema that sends the requesting state request and collected responses from the disclosing state to the requesting states PMP system.. 
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ObjectType">
+				<xsd:sequence>
+					<xsd:element ref="pmp:PrescriptionReport" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PMPPrescriptionReport" type="pmix:PMPPrescriptionReportType" nillable="true"/>
+</xsd:schema>

@@ -190,21 +190,6 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
 					<xsd:documentation>Transferred/Forwarded Prescription</xsd:documentation>
 				</xsd:annotation>
 			</xsd:enumeration>
-			<xsd:enumeration value="07">
-				<xsd:annotation>
-					<xsd:documentation>Order (Administered at Prescriber Location)</xsd:documentation>
-				</xsd:annotation>
-			</xsd:enumeration>
-			<xsd:enumeration value="08">
-				<xsd:annotation>
-					<xsd:documentation>Dispensed from a Prescriber Location</xsd:documentation>
-				</xsd:annotation>
-			</xsd:enumeration>
-			<xsd:enumeration value="09">
-				<xsd:annotation>
-					<xsd:documentation>Standing Order/Protocol</xsd:documentation>
-				</xsd:annotation>
-			</xsd:enumeration>
 			<xsd:enumeration value="99">
 				<xsd:annotation>
 					<xsd:documentation>Other</xsd:documentation>
@@ -367,6 +352,16 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
 			<xsd:enumeration value="11">
 				<xsd:annotation>
 					<xsd:documentation>Hospice</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:documentation>Homeless/Unhoused</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:documentation>Transient Care</xsd:documentation>
 				</xsd:annotation>
 			</xsd:enumeration>
 			<xsd:enumeration value="98">
@@ -549,7 +544,7 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
 	</xsd:complexType>
 	<xsd:simpleType name="OpioidTreatmentCategoryCodeSimpleType">
 		<xsd:annotation>
-			<xsd:documentation>A code identifying the reason for an opioid prescription.
+			<xsd:documentation>A code identifying the reason for an opioid prescription.
 			</xsd:documentation>
 			<xsd:appinfo>
 				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
@@ -620,7 +615,7 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
 	</xsd:simpleType>
 	<xsd:complexType name="OpioidTreatmentCategoryCodeType">
 		<xsd:annotation>
-			<xsd:documentation>A code identifying the reason for an opioid prescription. 
+			<xsd:documentation>A code identifying the reason for an opioid prescription.
 			</xsd:documentation>
 			<xsd:appinfo>
 				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>

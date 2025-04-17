@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.pmixpmp.org" targetNamespace="http://www.pmixpmp.org" elementFormDefault="qualified">
+
+	<xs:element name="RequestType">
+
+		<xs:complexType>
+
+			<xs:sequence>
+
+				<xs:element name="RequestData" type="xs:string" nillable="true" minOccurs="0"/>
+
+			</xs:sequence>
+
+		</xs:complexType>
+
+	</xs:element>
+
+
+
+	<xs:complexType name="MetaDataType">
+
+		<xs:sequence>
+
+			<xs:element name="Requestor" type="tns:RequestorType" nillable="true"/>
+
+			<xs:element name="RequestorOrganization" type="tns:RequestorOrganizationType" nillable="true"/>
+
+
+			<xs:element name="RoutingData" type="tns:RoutingDataType" nillable="true"/>
+
+			<xs:element name="Version" type="xs:string"/>
+
+		</xs:sequence>
+
+	</xs:complexType>
+
+
+
+	<xs:element name="MetaDataType" type="tns:MetaDataType" nillable="true"/>
+
+
+
+	<xs:simpleType name="RoleType">
+
+		<xs:restriction base="xs:string">
+
+			<!-- Not currently used as codes in implementations
+
+			<xs:enumeration value="Physicians"/>
+
+			<xs:enumeration value="Advanced Practice RNs"/>
+
+			<xs:enumeration value="Physician Assistants"/>
+
+			<xs:enumeration value="Dentists"/>
+
+			<xs:enumeration value="Optometrists"/>
+
+			<xs:enumeration value="Psychologists"/>
+
+			<xs:enumeration value="Naturopaths"/>
+
+			<xs:enumeration value="Homeopaths"/>
+
+			<xs:enumeration value="Veterinarians"/>
+
+			<xs:enumeration value="Interns"/>
+
+			<xs:enumeration value="Residents"/>
+
+			<xs:enumeration value="Prescribing Pharmacists"/>
+
+			<xs:enumeration value="Other Prescribers"/>
+
+			<xs:enumeration value="Pharmacists"/>
+
+			<xs:enumeration value="Pharmacy"/>
+
+			<xs:enumeration value="Prescriber Delegates - Licensed"/>
+
+			<xs:enumeration value="Prescriber Delegates - Unlicensed"/>
+
+			<xs:enumeration value="Dispenser Delegates - Licensed"/>
+
+			<xs:enumeration value="Dispenser Delegates - Unlicensed"/>
+
+			<xs:enumeration value="Substance Abuse/Mental Health Professional"/>
+
+			<xs:enumeration value="Other Non-Prescribers"/>
+
+			<xs:enumeration value="Institutional Account Holder"/>
+
+			-->
+
+		</xs:restriction>
+
+	</xs:simpleType>
+
+
+
+	<xs:element name="RoleType" type="tns:RoleType" nillable="true"/>
+
+
+
+	<xs:complexType name="HubIdentificationType">
+
+		<xs:sequence>
+
+			<xs:element name="HubIdentificationID" type="xs:string" nillable="true"/>
+
+			<xs:element name="HubIdentificationCode" type="tns:HubIdentificationCodeType" nillable="true"/>
+
+		</xs:sequence>
+
+	</xs:complexType>
+
+
+
+	<xs:simpleType name="HubIdentificationCodeType">
+
+		<xs:restriction base="xs:string">
+
+			<xs:enumeration value="RxCheck"/>
+
+			<xs:enumeration value="PMPi"/>
+
+		</xs:restriction>
+
+	</xs:simpleType>
+
+
+
+	<xs:simpleType name="IdentificationCategoryCodeType">
+
+		<xs:restriction base="xs:string">
+
+			<xs:enumeration value="DEA"/>
+
+			<xs:enumeration value="NPI"/>
+
+			<xs:enumeration value="State License"/>
+
+			<xs:enumeration value="Other"/>
+
+			<!-- <xs:enumeration value="PDMP"/> -->
+
+		</xs:restriction>
+
+	</xs:simpleType>
+
+
+
+	<xs:complexType name="IdentificationType">
+
+		<xs:sequence>
+
+			<xs:element name="IdentificationID" type="xs:string" nillable="true"/>
+
+			<xs:element name="IdentificationCategoryCode" type="tns:IdentificationCategoryCodeType" nillable="true"/>
+
+		</xs:sequence>
+
+	</xs:complexType>
+
+
+
+	<xs:complexType name="RequestorType">
+
+		<xs:sequence>
+
+			<xs:element name="RequestorRole" type="tns:RoleType" minOccurs="0"/>
+
+			<xs:element name="RequestorGivenName" type="xs:string" minOccurs="0" nillable="true"/>
+
+			<xs:element name="RequestorSurName" type="xs:string" minOccurs="0" nillable="true"/>
+
+			<xs:element name="RequestorIdentification" type="tns:IdentificationType" minOccurs="1" maxOccurs="4" nillable="true"/>
+
+			<xs:element name="RequestorFacility" type="tns:RequestorFacilityType" minOccurs="0" nillable="true"/>
+
+		</xs:sequence>
+
+	</xs:complexType>
+
+
+
+	<xs:complexType name="RequestorFacilityType">
+
+		<xs:sequence>
+
+			<xs:element name="RequestorOrganizationName" type="xs:string" nillable="true"/>
+
+			<!-- <xs:element name="RequestorPDMPID" type="xs:string" nillable="true"/> -->
+
+			<xs:element name="FacilityIdentification" type="tns:IdentificationType" minOccurs="1" maxOccurs="4" nillable="true"/>
+
+		</xs:sequence>
+
+	</xs:complexType>
+
+
+
+	<xs:complexType name="RequestorOrganizationType">
+
+		<xs:sequence>
+
+			<xs:element name="RequestorOrganizationName" type="xs:string" nillable="true"/>
+
+			<!-- <xs:element name="RequestorPDMPID" type="xs:string" nillable="true"/> -->
+
+			<!-- <xs:element name="FacilityIdentification" type="tns:IdentificationType" minOccurs="1" maxOccurs="4" nillable="true"/> -->
+
+		</xs:sequence>
+
+	</xs:complexType>
+
+
+
+	<xs:complexType name="ResponseStatusType">
+
+		<xs:sequence>
+
+			<xs:element name="Status" type="tns:StatusType" maxOccurs="unbounded" nillable="true"/>
+
+		</xs:sequence>
+
+	</xs:complexType>
+
+
+
+	<xs:complexType name="StatusType">
+
+		<xs:sequence>
+
+			<xs:element name="DisclosingState" type="xs:string" nillable="true"/>
+
+			<xs:element name="PMPStatus" type="tns:ResponseStatusCodeType" nillable="true"/>
+
+		</xs:sequence>
+
+	</xs:complexType>
+
+
+
+	<xs:complexType name="RoutingDataType">
+
+		<xs:sequence>
+
+			<xs:element name="RequestID" type="xs:string" nillable="true"/>
+
+			<xs:element name="RequestDateTime" type="xs:dateTime"/>
+
+			<xs:element name="RequestingState" type="xs:string" nillable="true"/>
+
+			<xs:element name="StateRequestID" type="xs:string" nillable="true"/>
+
+			<xs:element name="DisclosingState" type="xs:string" nillable="true"/>
+
+			<xs:element name="StateDisclosureID" type="xs:string" nillable="true"/>
+
+			<xs:element name="HubRequestID" type="xs:string" nillable="true"/>
+
+			<xs:element name="HubDisclosureID" type="xs:string" nillable="true"/>
+
+			<xs:element name="HubUsedIdentification" type="tns:HubIdentificationType" nillable="true"/>
+
+		</xs:sequence>
+
+	</xs:complexType>
+
+
+
+	<xs:element name="RoutingDataType" type="tns:RoutingDataType" nillable="true"/>
+
+
+
+	<xs:element name="MetaData" type="tns:MetaDataType" nillable="true"/>
+
+
+
+	<xs:element name="ResponseType">
+
+		<xs:complexType>
+
+			<xs:sequence>
+
+				<xs:element name="ResponseData" type="xs:string" nillable="true" minOccurs="0"/>
+
+			</xs:sequence>
+
+		</xs:complexType>
+
+	</xs:element>
+
+
+
+	<xs:simpleType name="ResponseStatusCodeType">
+
+		<xs:restriction base="xs:string">
+
+			<xs:enumeration value="Deferred"/>
+
+			<xs:enumeration value="NotFound"/>
+
+			<xs:enumeration value="Provided"/>
+
+			<xs:enumeration value="NotSupported"/>
+
+			<xs:enumeration value="Error"/>
+
+			<xs:enumeration value="Disallowed"/>
+
+			<xs:enumeration value="VersionMismatch"/>
+
+		</xs:restriction>
+
+	</xs:simpleType>
+
+
+
+	<!-- <xs:element name="ResponseStatusType" type="tns:ResponseStatusType" nillable="true"/> -->
+
+
+
+	<xs:element name="ResponseStatus" type="tns:ResponseStatusType"/>
+
+
+
+	<xs:element name="PMPStatus" type="tns:ResponseStatusCodeType"/>
+
+
+
+	<xs:element name="RoutingData" type="tns:RoutingDataType" nillable="true"/>
+
+
+
+	<xs:element name="AcknowledgementType">
+
+		<xs:complexType>
+
+			<xs:sequence/>
+
+		</xs:complexType>
+
+	</xs:element>
+
+
+
+	<xs:element name="Acknowledgement" type="xs:boolean"/>
+
+
+
+</xs:schema>
