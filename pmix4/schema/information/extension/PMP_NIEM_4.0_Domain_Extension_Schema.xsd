@@ -98,15 +98,24 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:element name="PersonIdentifier" abstract="true">
-		<xsd:annotation>
-			<xsd:documentation>
-        This property must be substituted by pmp:PersonDriverLicenseIdentifier, pmp:PersonMilitaryIdentifier, pmp:PersonOtherIdentifier,
-        pmp:PersonPassportIdentifier, pmp:PersonSocialSecurityNumberIdentifier, pmp:PersonStateIssuedIdentifer, pmp:PersonTribalIdentifier
-        or pmp:PersonUniqueSystemIdentifier
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
+    <xsd:element name="PersonIdentifier" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>
+                This property must be substituted by one of the following:
+                pmp:PersonDriverLicenseIdentifier,
+                pmp:PersonMilitaryIdentifier,
+                pmp:PersonOtherIdentifier,
+                pmp:PersonPassportIdentifier,
+                pmp:PersonSocialSecurityNumberIdentifier,
+                pmp:PersonStateIssuedIdentifier,
+                pmp:PersonTribalIdentifier,
+                pmp:PersonUniqueSystemIdentifier,
+                pmp:PersonPermanentResidentCardIdentifier,
+                pmp:PersonVeterinaryPatientMicrochipIdentifier,
+                pmp:PersonMedicaidRecipientIdentifier
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
 	<xsd:element name="PrescriptionReport" abstract="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -205,86 +214,139 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:element name="PersonDriverLicenseIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identfies a person using their driver's license number and the entity which has jurisdiction over the licensee based on the license.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonMilitaryIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identfies a person using their military id number and the entity which has jurisdiction over the licensee based on the license.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonNationalHealthIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-				Identifies a person using their national health ID number and the entity which has jurisdiction over the ID.
-				This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonOtherIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identfies a person using an id number and the entity which has jurisdiction over the licensee based on the license.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonPassportIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identfies a person using their passport number and the entity which has jurisdiction over tvhe passport.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonSocialSecurityNumberIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identfies a person using their social security number and the entity which has jurisdiction over the number.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonStateIssuedIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identfies a person using their state identification number and the entity which has jurisdiction over the identification.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonTribalIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identifies a person using their tribal id number and the entity which has jurisdiction over the id.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonUniqueSystemIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-        Identifies a person using a unique system number and the entity which has jurisdiction over the number.
-        This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-      </xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PersonVendorSystemIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
-		<xsd:annotation>
-			<xsd:documentation>
-				Identifies a person using an ID number provided by a vendor and the vendor which has jurisdiction over the number.
-				This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
+    <xsd:element name="PersonPermanentResidentCardIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their permanent resident card (green card).
+                This property and its subproperties replace
+                PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonVeterinaryPatientMicrochipIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a pet using their microchip number
+                This property and its subproperties replace
+                PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonMedicaidRecipientIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their medicaid recipient identifier.
+                This property and its subproperties replace
+                PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonDriverLicenseIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their driver's license number and the entity which has jurisdiction over the
+                licensee based on the license.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonMilitaryIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their military id number and the entity which has jurisdiction over the
+                licensee based on the license.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonNationalHealthIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their national health ID number and the entity which has jurisdiction over the
+                ID.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonOtherIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using an id number and the entity which has jurisdiction over the licensee based on
+                the license.
+                This property and its subproperties replace
+                PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonPassportIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their passport number and the entity which has jurisdiction over the passport.
+                This property and its subproperties replace
+                PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03, AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonSocialSecurityNumberIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their social security number and the entity which has jurisdiction over the
+                number.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonStateIssuedIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their state identification number and the entity which has jurisdiction over
+                the identification.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonTribalIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using their tribal id number and the entity which has jurisdiction over the id.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonUniqueSystemIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using a unique system number and the entity which has jurisdiction over the number.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PersonVendorSystemIdentifier" type="nc:IdentificationType"
+                 substitutionGroup="pmp:PersonIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>
+                Identifies a person using an ID number provided by a vendor and the vendor which has jurisdiction over
+                the number.
+                This property and its subproperties replace PAT01, PAT02 and PAT03 or PAT04, PAT05 and PAT06 or AIR03,
+                AIR04 and AIR05
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
 	<xsd:element name="PharmacyReportingPrescriptionReport" type="pmp:PharmacyReportingPrescriptionReportType" substitutionGroup="pmp:PrescriptionReport">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -413,14 +475,14 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:element name="RemainingQuantity" type="xsd:nonNegativeInteger" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				Total quantity remaining for prescription.
-				DSP29
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
+        <xsd:element name="RemainingQuantity" type="xsd:nonNegativeInteger" nillable="true">
+                <xsd:annotation>
+                        <xsd:documentation>
+                                Total quantity remaining for prescription.
+                                DSP29
+                        </xsd:documentation>
+                </xsd:annotation>
+        </xsd:element>
 	<xsd:element name="DrugDosageUnitsCode" type="pmpcd:DrugDosageUnitsCodeType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -460,7 +522,7 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:element name="DocumentPublicationTime" type="niem-xsd:time" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
-        Time the report was generated for publication. 
+        Time the report was generated for publication.
         Replaces TH06
       </xsd:documentation>
 		</xsd:annotation>
@@ -529,7 +591,7 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:element name="OpioidTreatmentCategoryCode" type="pmpcd:OpioidTreatmentCategoryCodeType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
-				The reason for an opioid prescription...
+				The reason for an opioid prescription...
 				Replaces DSP24
 			</xsd:documentation>
 		</xsd:annotation>
@@ -559,26 +621,26 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:element name="PatientPreferredOrAliasLastName" type="nc:TextType" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				ASAP 5 field PAT24
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="PatientPreferredOrAliasFirstName" type="nc:TextType" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				ASAP 5 field PAT25
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
+        <xsd:element name="PatientPreferredOrAliasLastName" type="nc:TextType" nillable="true">
+               <xsd:annotation>
+                       <xsd:documentation>
+                               ASAP 5 field PAT24
+                       </xsd:documentation>
+               </xsd:annotation>
+       </xsd:element>
+       <xsd:element name="PatientPreferredOrAliasFirstName" type="nc:TextType" nillable="true">
+               <xsd:annotation>
+                       <xsd:documentation>
+                               ASAP 5 field PAT25
+                       </xsd:documentation>
+               </xsd:annotation>
+       </xsd:element>
 	<xsd:element name="Person" type="nc:PersonType"/>
 	<xsd:element name="PersonPrimaryContactInformation" type="nc:ContactInformationType">
 		<xsd:annotation>
 			<xsd:documentation>
         Holds telephone number and address of a person
-        Replaces PAT12, PAT13, PAT14, PAT15, PAT16, PAT17
+        Replaces PAT12, PAT13, PAT14, PAT15, PAT16, PAT17, PRE08
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
@@ -589,7 +651,6 @@ April 1, 2010 - Chad Garner, OSBP
 			</xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-
 	<xsd:element name="PrescriberDEANumberSuffixText" type="nc:TextType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -631,36 +692,41 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+        <xsd:element name="TimeWritten" type="xsd:dateTime" nillable="true">
+                <xsd:annotation>
+                        <xsd:documentation>
+                                A precise time a prescription was written.
+                                DSP26
+                        </xsd:documentation>
+                </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="TimeFilled" type="xsd:dateTime" nillable="true">
+                <xsd:annotation>
+                        <xsd:documentation>
+                                A precise time a prescription was filled.
+                                DSP27
+                        </xsd:documentation>
+                </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="TimeSold" type="xsd:dateTime" nillable="true">
+                <xsd:annotation>
+                        <xsd:documentation>
+                                A precise time a prescription was sold.
+                                DSP28
+                        </xsd:documentation>
+                </xsd:annotation>
+        </xsd:element>
 	<xsd:element name="PrescriptionSoldDate" type="nc:DateType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
-				Date the prescription was received by the patient or patient's agent
-				Replaces DSP17
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="TimeWritten" type="xsd:dateTime" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				A precise time a prescription was written.
-				DSP26
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="TimeFilled" type="xsd:dateTime" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				A precise time a prescription was filled.
-				DSP27
-			</xsd:documentation>
-		</xsd:annotation>
-	</xsd:element>
-	<xsd:element name="TimeSold" type="xsd:dateTime" nillable="true">
-		<xsd:annotation>
-			<xsd:documentation>
-				A precise time a prescription was sold.
-				DSP28
-			</xsd:documentation>
+            This field is used to determine the date the prescription was dispensed (sold to, picked up by, or otherwise left the pharmacy), not the date it was prepared.
+            This date could be captured from the point-of-sale (POS) system, if the pharmacy has a POS system,
+            and there is a bidirectional flow with the pharmacy management system in order to capture and report this date.
+            Or it could be captured and reported from a will-call management system, integrated
+            with the pharmacy management system.
+
+            Replaces DSP17
+      </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
 	<xsd:element name="PrescriptionWrittenDate" type="nc:DateType" nillable="true">
@@ -842,8 +908,6 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:PatientLocationCode" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientNameOfAnimalText" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientAlert" minOccurs="0" maxOccurs="unbounded"/>
-					<xsd:element ref="pmp:PatientPreferredOrAliasFirstName" minOccurs="0" maxOccurs="1" />
-					<xsd:element ref="pmp:PatientPreferredOrAliasLastName" minOccurs="0" maxOccurs="1" />
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
@@ -864,6 +928,26 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+    <xsd:complexType name="PersonDroppingOffRxType">
+        <xsd:complexContent>
+            <xsd:extension base="nc:PersonType">
+                <xsd:sequence>
+                    <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
+                    <xsd:element ref="pmp:RelationshipToPatientCode" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PersonPickingUpRxType">
+        <xsd:complexContent>
+            <xsd:extension base="nc:PersonType">
+                <xsd:sequence>
+                    <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
+                    <xsd:element ref="pmp:RelationshipToPatientCode" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
 	<xsd:complexType name="CompoundDrugIngredientType">
 		<xsd:annotation>
 			<xsd:documentation>Ingredients that make up a compound drug.
@@ -923,9 +1007,7 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:complexType name="PrescriptionDrugType">
 		<xsd:complexContent>
 			<xsd:annotation>
-				<xsd:documentation>
-					Type of medicinal treatment made of organic or inorganic compounds that can be legally ordered for a patient's care.
-				</xsd:documentation>
+				<xsd:documentation>Type of medicinal treatment made of organic or inorganic compounds that can be legally ordered for a patient's care.</xsd:documentation>
 			</xsd:annotation>
 			<xsd:extension base="s:ObjectType">
 				<xsd:sequence>
@@ -1016,7 +1098,6 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:PrescriptionDrug" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:RefillsAuthorizedCount" minOccurs="1" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:DispensedQuantity" minOccurs="1" maxOccurs="unbounded"/>
-					<xsd:element ref="pmp:RemainingQuantity" minOccurs="1" maxOccurs="1" />
 					<xsd:element ref="pmp:DaysSupplyCount" minOccurs="1" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:DrugDosageUnitsCode" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:MethodOfPaymentCode" minOccurs="0" maxOccurs="unbounded"/>
@@ -1028,9 +1109,10 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:ICD-10DiagnosticCodeText" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:OpioidTreatmentCategoryCode" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:PrescriptionSoldDate" minOccurs="0" maxOccurs="unbounded"/>
-					<xsd:element ref="pmp:TimeWritten" minOccurs="0" maxOccurs="1" />
-					<xsd:element ref="pmp:TimeFilled" minOccurs="0" maxOccurs="1" />
-					<xsd:element ref="pmp:TimeSold" minOccurs="0" maxOccurs="1" />
+                                        <xsd:element ref="pmp:RemainingQuantity" minOccurs="1" maxOccurs="1" />
+                                        <xsd:element ref="pmp:TimeWritten" minOccurs="0" maxOccurs="1" />
+                                        <xsd:element ref="pmp:TimeFilled" minOccurs="0" maxOccurs="1" />
+                                        <xsd:element ref="pmp:TimeSold" minOccurs="0" maxOccurs="1" />
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
