@@ -1,5 +1,0 @@
-<pmix-asap5:PersonSexCode structures:id="string" structures:ref="string" structures:uri="http://www.your.org/in/animos"
-                    structures:metadata="string" structures:relationshipMetadata="string string"
-                    xmlns:pmix-asap5="https://www.pdmpassist.org/pmix/asap50/"
-                    xmlns:structures="http://release.niem.gov/niem/structures/4.0/">N
-</pmix-asap5:PersonSexCode>
