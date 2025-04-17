@@ -1,0 +1,5 @@
+<ns:PersonSexText structures:id="string" structures:ref="string" structures:uri="http://www.sample.com/ignem/flammato"
+                  structures:metadata="string string" structures:relationshipMetadata="string string"
+                  xmlns:ns="http://release.niem.gov/niem/niem-core/4.0/"
+                  xmlns:structures="http://release.niem.gov/niem/structures/4.0/">string
+</ns:PersonSexText>
