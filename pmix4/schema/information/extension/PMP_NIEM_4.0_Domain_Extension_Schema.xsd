@@ -174,6 +174,14 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="DrugCannabisProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:DrugProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies a drug using a Cannabis product identifier.
+        Replaces DSP07 and DSP08 when DSP07 is 07 Cannabis
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="DrugDINProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:DrugProductIdentifier">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -475,7 +483,7 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-        <xsd:element name="RemainingQuantity" type="xsd:nonNegativeInteger" nillable="true">
+        <xsd:element name="RemainingQuantity" type="niem-xsd:decimal" nillable="true">
                 <xsd:annotation>
                         <xsd:documentation>
                                 Total quantity remaining for prescription.
@@ -566,6 +574,22 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="PharmacyDispensingSoftwareVendorText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Pharmacy dispensing software vendor name.
+        Replaces IS04
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PharmacyDispensingSoftwareVendorPhoneNumberText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Phone number of the pharmacy dispensing software vendor.
+        Replaces IS05
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="MethodOfPaymentCode" type="pmpcd:MethodOfPaymentCodeType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -578,6 +602,22 @@ April 1, 2010 - Chad Garner, OSBP
 		<xsd:annotation>
 			<xsd:documentation>
         Identifier assigned by the National Council of Prescription Drug Programs. PHA02
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PharmacyDispenserTypeCode" type="pmpcd:PharmacyDispenserTypeCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code identifying the type of pharmacy or dispenser.
+        Replaces PHA14
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MailOrderPharmacyIndicator" type="niem-xsd:boolean" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Indicates whether the pharmacy is a mail order pharmacy.
+        Replaces PHA15
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
@@ -635,6 +675,54 @@ April 1, 2010 - Chad Garner, OSBP
                        </xsd:documentation>
                </xsd:annotation>
        </xsd:element>
+	<xsd:element name="PatientGenderCode" type="pmpcd:GenderCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code identifying the gender of the patient. Includes N (Nonbinary) and X (Undisclosed) per ASAP 5.0.
+        Replaces PAT19
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PatientCountryOfNonUSResidentText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Country of non-U.S. resident patient.
+        Replaces PAT22
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PatientRaceCategoryText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Race category of the patient.
+        Replaces PAT26
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PatientEthnicityText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Ethnicity of the patient.
+        Replaces PAT27
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="VeterinarySpeciesCode" type="pmpcd:VeterinarySpeciesCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code describing animal species.
+        Replaces PAT28
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AnimalLocationCode" type="pmpcd:AnimalLocationCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code describing the location of an animal.
+        Replaces PAT29
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="Person" type="nc:PersonType"/>
 	<xsd:element name="PersonPrimaryContactInformation" type="nc:ContactInformationType">
 		<xsd:annotation>
@@ -707,30 +795,102 @@ April 1, 2010 - Chad Garner, OSBP
             </xsd:documentation>
         </xsd:annotation>
     </xsd:element>
-    <xsd:element name="TimeWritten" type="xsd:dateTime" nillable="true">
+    <xsd:element name="TimeWritten" type="niem-xsd:token" nillable="true">
         <xsd:annotation>
             <xsd:documentation>
-                A precise time a prescription was written.
+                Time a prescription was written in UTC format HHMMSSZ.
                 DSP26
             </xsd:documentation>
         </xsd:annotation>
     </xsd:element>
-    <xsd:element name="TimeFilled" type="xsd:dateTime" nillable="true">
+    <xsd:element name="TimeFilled" type="niem-xsd:token" nillable="true">
         <xsd:annotation>
             <xsd:documentation>
-                A precise time a prescription was filled.
+                Time a prescription was filled in UTC format HHMMSSZ.
                 DSP27
             </xsd:documentation>
         </xsd:annotation>
     </xsd:element>
-    <xsd:element name="TimeSold" type="xsd:dateTime" nillable="true">
+    <xsd:element name="TimeSold" type="niem-xsd:token" nillable="true">
         <xsd:annotation>
             <xsd:documentation>
-                A precise time a prescription was sold.
+                Time a prescription was sold in UTC format HHMMSSZ.
                 DSP28
             </xsd:documentation>
         </xsd:annotation>
     </xsd:element>
+	<xsd:element name="RemainingQuantityDrugDosageUnitsCode" type="pmpcd:DrugDosageUnitsCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Drug dosage units code for the total quantity remaining.
+        Replaces DSP30
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DiscountCardCode" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Discount card code.
+        Replaces DSP31
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassificationCodeForAdditionalPaymentType" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Classification code for additional payment type.
+        Replaces DSP32
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DiscountCardForAdditionalPaymentType" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Discount card for additional payment type.
+        Replaces DSP33
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DEAScheduleStateDesignationCode" type="pmpcd:DEAScheduleStateDesignationCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        DEA Schedule or State Designation for the dispensed drug.
+        Replaces DSP34
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PharmacistFillingLastNameText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Last name or initials of the pharmacist filling the prescription. Moved from AIR09.
+        Replaces DSP35
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PharmacistFillingFirstNameText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        First name or initials of the pharmacist filling the prescription. Moved from AIR10.
+        Replaces DSP36
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CompoundDrugIngredientDEAScheduleStateDesignationCode" type="pmpcd:DEAScheduleStateDesignationCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        DEA Schedule or State Designation of each ingredient in a compound drug.
+        Replaces CDI06
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MethodOfDeliveryCode" type="pmpcd:MethodOfDeliveryCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code indicating the method of delivery for picking up a prescription.
+        Replaces AIR19
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="PrescriptionWrittenDate" type="nc:DateType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -750,8 +910,33 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:element name="RelationshipToPatientCode" type="pmpcd:RelationshipToPatientCodeType">
 		<xsd:annotation>
 			<xsd:documentation>
-        Indicates an agent's relationship to a patient
+        Indicates the relationship of the person picking up Rx to the patient.
         Replaces AIR06
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DroppingOffRelationshipToPatientCode" type="pmpcd:DroppingOffRelationshipToPatientCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+        Indicates the relationship of the person dropping off Rx to the patient.
+        Uses code 04=Other per ASAP 5.0.
+        Replaces AIR23
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonPickingUpRx" type="pmp:PersonPickingUpRxType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Information about the person picking up the prescription.
+        Replaces AIR03-AIR19
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonDroppingOffRx" type="pmp:PersonDroppingOffRxType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Information about the person dropping off the prescription.
+        Replaces AIR20-AIR32
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
@@ -805,7 +990,7 @@ April 1, 2010 - Chad Garner, OSBP
 		<xsd:annotation>
 			<xsd:documentation>
         Number assigned to a state issued serialized prescription blank as well as the state which issued it.
-        Replaces AIR01 and AIR02
+        Replaces AIR01, AIR02
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
@@ -910,6 +1095,14 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:PatientLocationCode" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientNameOfAnimalText" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientAlert" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PatientGenderCode" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientCountryOfNonUSResidentText" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientPreferredOrAliasLastName" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientPreferredOrAliasFirstName" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientRaceCategoryText" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientEthnicityText" minOccurs="0"/>
+					<xsd:element ref="pmp:VeterinarySpeciesCode" minOccurs="0"/>
+					<xsd:element ref="pmp:AnimalLocationCode" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
@@ -935,7 +1128,8 @@ April 1, 2010 - Chad Garner, OSBP
             <xsd:extension base="nc:PersonType">
                 <xsd:sequence>
                     <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
-                    <xsd:element ref="pmp:RelationshipToPatientCode" minOccurs="0"/>
+                    <xsd:element ref="pmp:DroppingOffRelationshipToPatientCode" minOccurs="0"/>
+                    <xsd:element ref="pmp:PersonPrimaryContactInformation" minOccurs="0"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
@@ -946,6 +1140,8 @@ April 1, 2010 - Chad Garner, OSBP
                 <xsd:sequence>
                     <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
                     <xsd:element ref="pmp:RelationshipToPatientCode" minOccurs="0"/>
+                    <xsd:element ref="pmp:PersonPrimaryContactInformation" minOccurs="0"/>
+                    <xsd:element ref="pmp:MethodOfDeliveryCode" minOccurs="0"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
@@ -965,6 +1161,7 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:CompoundDrugIngredientDEAClassScheduleText" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:IngredientQuantity" minOccurs="1" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:CompoundDrugIngredientDrugDosageUnitsCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:CompoundDrugIngredientDEAScheduleStateDesignationCode" minOccurs="0" maxOccurs="unbounded"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
@@ -1034,6 +1231,8 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:NCPDPIdentifier" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:ContactNameText" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:ChainSiteIDText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PharmacyDispenserTypeCode" minOccurs="0"/>
+					<xsd:element ref="pmp:MailOrderPharmacyIndicator" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
@@ -1115,6 +1314,15 @@ April 1, 2010 - Chad Garner, OSBP
                                         <xsd:element ref="pmp:TimeWritten" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeFilled" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeSold" minOccurs="0" maxOccurs="1" />
+					<xsd:element ref="pmp:RemainingQuantityDrugDosageUnitsCode" minOccurs="0"/>
+					<xsd:element ref="pmp:DiscountCardCode" minOccurs="0"/>
+					<xsd:element ref="pmp:ClassificationCodeForAdditionalPaymentType" minOccurs="0"/>
+					<xsd:element ref="pmp:DiscountCardForAdditionalPaymentType" minOccurs="0"/>
+					<xsd:element ref="pmp:DEAScheduleStateDesignationCode" minOccurs="0"/>
+					<xsd:element ref="pmp:PharmacistFillingLastNameText" minOccurs="0"/>
+					<xsd:element ref="pmp:PharmacistFillingFirstNameText" minOccurs="0"/>
+					<xsd:element ref="pmp:PersonPickingUpRx" minOccurs="0"/>
+					<xsd:element ref="pmp:PersonDroppingOffRx" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
@@ -1182,6 +1390,8 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:UniqueInformationSourceIDText" minOccurs="1" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:InformationSourceEntityNameText" minOccurs="1" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:MessageText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PharmacyDispensingSoftwareVendorText" minOccurs="0"/>
+					<xsd:element ref="pmp:PharmacyDispensingSoftwareVendorPhoneNumberText" minOccurs="0"/>
 					<xsd:element ref="pmp:PrescriptionForReporting" minOccurs="0" maxOccurs="unbounded"/>
 				</xsd:sequence>
 			</xsd:extension>

@@ -221,25 +221,47 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
         <xsd:restriction base="xsd:token">
             <xsd:enumeration value="01">
                 <xsd:annotation>
-                    <xsd:documentation>Patient</xsd:documentation>
+                    <xsd:documentation>Parent/Legal Guardian</xsd:documentation>
                 </xsd:annotation>
             </xsd:enumeration>
             <xsd:enumeration value="02">
                 <xsd:annotation>
-                    <xsd:documentation>Parent/Legal Guardian</xsd:documentation>
-                </xsd:annotation>
-            </xsd:enumeration>
-            <xsd:enumeration value="03">
-                <xsd:annotation>
                     <xsd:documentation>Spouse</xsd:documentation>
                 </xsd:annotation>
             </xsd:enumeration>
-            <xsd:enumeration value="04">
+            <xsd:enumeration value="03">
                 <xsd:annotation>
                     <xsd:documentation>Caregiver</xsd:documentation>
                 </xsd:annotation>
             </xsd:enumeration>
             <xsd:enumeration value="99">
+                <xsd:annotation>
+                    <xsd:documentation>Other</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="DroppingOffRelationshipToPatientCodeType">
+        <xsd:annotation>
+            <xsd:documentation>Relationship of person dropping off Rx to the patient. AIR23. Note: uses 04=Other per ASAP 5.0.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Parent/Legal Guardian</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>Spouse</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="03">
+                <xsd:annotation>
+                    <xsd:documentation>Caregiver</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="04">
                 <xsd:annotation>
                     <xsd:documentation>Other</xsd:documentation>
                 </xsd:annotation>
@@ -782,6 +804,314 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
         </xsd:annotation>
         <xsd:simpleContent>
             <xsd:extension base="pmpcd:PrescriptionNormProductQualifierCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <!-- ASAP 5.0 New Code Types -->
+    <xsd:simpleType name="GenderCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the gender of a person. PAT19</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="M">
+                <xsd:annotation>
+                    <xsd:documentation>Male</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="F">
+                <xsd:annotation>
+                    <xsd:documentation>Female</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="U">
+                <xsd:annotation>
+                    <xsd:documentation>Unknown/Undisclosed</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="N">
+                <xsd:annotation>
+                    <xsd:documentation>Nonbinary</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="X">
+                <xsd:annotation>
+                    <xsd:documentation>Unspecified/Other</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="GenderCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the gender of a person. PAT19</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:GenderCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:simpleType name="PharmacyDispenserTypeCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the type of pharmacy or dispenser. PHA14</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Independent Pharmacy</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>Chain Pharmacy</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="03">
+                <xsd:annotation>
+                    <xsd:documentation>Long-term Care Pharmacy</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="04">
+                <xsd:annotation>
+                    <xsd:documentation>Hospital Pharmacy</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="05">
+                <xsd:annotation>
+                    <xsd:documentation>Opioid Treatment Program</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="06">
+                <xsd:annotation>
+                    <xsd:documentation>Cannabis Dispensary</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="07">
+                <xsd:annotation>
+                    <xsd:documentation>Veterinary/Vet Patient Only Dispenser</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="08">
+                <xsd:annotation>
+                    <xsd:documentation>Dispensing Prescriber</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="09">
+                <xsd:annotation>
+                    <xsd:documentation>Specialty Pharmacy</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="10">
+                <xsd:annotation>
+                    <xsd:documentation>Federal</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="11">
+                <xsd:annotation>
+                    <xsd:documentation>Tribal</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="99">
+                <xsd:annotation>
+                    <xsd:documentation>Other</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="PharmacyDispenserTypeCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the type of pharmacy or dispenser. PHA14</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:PharmacyDispenserTypeCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:simpleType name="MethodOfDeliveryCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the method of delivery for picking up a prescription. AIR19</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Person Picked Up</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>Mailed/Shipped</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="MethodOfDeliveryCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the method of delivery for picking up a prescription. AIR19</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:MethodOfDeliveryCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:simpleType name="VeterinarySpeciesCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code describing animal species. PAT28</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Cat/Feline</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>Dog/Canine</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="03">
+                <xsd:annotation>
+                    <xsd:documentation>Small Animal (Hamster, Rabbit, Other Rodent)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="04">
+                <xsd:annotation>
+                    <xsd:documentation>Reptile</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="05">
+                <xsd:annotation>
+                    <xsd:documentation>Bird</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="06">
+                <xsd:annotation>
+                    <xsd:documentation>Livestock, Large Animal</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="99">
+                <xsd:annotation>
+                    <xsd:documentation>Other</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="VeterinarySpeciesCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code describing animal species. PAT28</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:VeterinarySpeciesCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:simpleType name="AnimalLocationCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code describing the location of an animal. PAT29</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Home</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>Animal Shelter</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="03">
+                <xsd:annotation>
+                    <xsd:documentation>Foster</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="04">
+                <xsd:annotation>
+                    <xsd:documentation>Farm</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="05">
+                <xsd:annotation>
+                    <xsd:documentation>Zoo</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="06">
+                <xsd:annotation>
+                    <xsd:documentation>Circus/Traveling Show</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="99">
+                <xsd:annotation>
+                    <xsd:documentation>Other</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="AnimalLocationCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code describing the location of an animal. PAT29</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:AnimalLocationCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:simpleType name="DEAScheduleStateDesignationCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>State or federal control level or other reporting designation. DSP34, CDI06</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Cannabis and Cannabis Extract</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>State or DEA Schedule 2</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="03">
+                <xsd:annotation>
+                    <xsd:documentation>State or DEA Schedule 3</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="04">
+                <xsd:annotation>
+                    <xsd:documentation>State or DEA Schedule 4</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="05">
+                <xsd:annotation>
+                    <xsd:documentation>State or DEA Schedule 5</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="06">
+                <xsd:annotation>
+                    <xsd:documentation>State Designated Other Controlled Substance or Drug of Concern</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="07">
+                <xsd:annotation>
+                    <xsd:documentation>CBD</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="99">
+                <xsd:annotation>
+                    <xsd:documentation>Legend or Non-Controlled Substances</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="DEAScheduleStateDesignationCodeType">
+        <xsd:annotation>
+            <xsd:documentation>State or federal control level or other reporting designation. DSP34, CDI06</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:DEAScheduleStateDesignationCodeSimpleType">
                 <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
             </xsd:extension>
         </xsd:simpleContent>
