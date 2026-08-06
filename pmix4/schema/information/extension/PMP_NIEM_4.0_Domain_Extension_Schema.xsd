@@ -755,6 +755,30 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="PersonPickingUpRx" type="pmp:PersonPickingUpRxType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Information about the person picking up the prescription.
+        Replaces AIR03-AIR19
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonDroppingOffRx" type="pmp:PersonDroppingOffRxType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Information about the person dropping off the prescription.
+        Replaces AIR20-AIR32
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MethodOfDeliveryCode" type="pmpcd:MethodOfDeliveryCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code indicating the method of delivery for picking up a prescription.
+        Replaces AIR19
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="ReportExecutionDate" type="niem-xsd:date" substitutionGroup="nc:DateRepresentation" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -936,6 +960,7 @@ April 1, 2010 - Chad Garner, OSBP
                 <xsd:sequence>
                     <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
                     <xsd:element ref="pmp:RelationshipToPatientCode" minOccurs="0"/>
+                    <xsd:element ref="pmp:PersonPrimaryContactInformation" minOccurs="0"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
@@ -946,6 +971,8 @@ April 1, 2010 - Chad Garner, OSBP
                 <xsd:sequence>
                     <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
                     <xsd:element ref="pmp:RelationshipToPatientCode" minOccurs="0"/>
+                    <xsd:element ref="pmp:PersonPrimaryContactInformation" minOccurs="0"/>
+                    <xsd:element ref="pmp:MethodOfDeliveryCode" minOccurs="0"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
@@ -1115,6 +1142,8 @@ April 1, 2010 - Chad Garner, OSBP
                                         <xsd:element ref="pmp:TimeWritten" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeFilled" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeSold" minOccurs="0" maxOccurs="1" />
+					<xsd:element ref="pmp:PersonPickingUpRx" minOccurs="0"/>
+					<xsd:element ref="pmp:PersonDroppingOffRx" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
