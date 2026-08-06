@@ -786,4 +786,109 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
+    <!-- ASAP 5.0 New Code Types -->
+    <xsd:simpleType name="VeterinarySpeciesCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code describing animal species. PAT28</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Cat/Feline</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>Dog/Canine</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="03">
+                <xsd:annotation>
+                    <xsd:documentation>Small Animal (Hamster, Rabbit, Other Rodent)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="04">
+                <xsd:annotation>
+                    <xsd:documentation>Reptile</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="05">
+                <xsd:annotation>
+                    <xsd:documentation>Bird</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="06">
+                <xsd:annotation>
+                    <xsd:documentation>Livestock, Large Animal</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="99">
+                <xsd:annotation>
+                    <xsd:documentation>Other</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="VeterinarySpeciesCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code describing animal species. PAT28</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:VeterinarySpeciesCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:simpleType name="AnimalLocationCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code describing the location of an animal. PAT29</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Home</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>Animal Shelter</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="03">
+                <xsd:annotation>
+                    <xsd:documentation>Foster</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="04">
+                <xsd:annotation>
+                    <xsd:documentation>Farm</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="05">
+                <xsd:annotation>
+                    <xsd:documentation>Zoo</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="06">
+                <xsd:annotation>
+                    <xsd:documentation>Circus/Traveling Show</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="99">
+                <xsd:annotation>
+                    <xsd:documentation>Other</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="AnimalLocationCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code describing the location of an animal. PAT29</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:AnimalLocationCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
 </xsd:schema>
