@@ -581,6 +581,22 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="PharmacyDispenserTypeCode" type="pmpcd:PharmacyDispenserTypeCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code identifying the type of pharmacy or dispenser.
+        Replaces PHA14
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MailOrderPharmacyIndicator" type="niem-xsd:boolean" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Indicates whether the pharmacy is a mail order pharmacy.
+        Replaces PHA15
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="NPIIdentifier" type="nc:IdentificationType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -1034,6 +1050,8 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:NCPDPIdentifier" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:ContactNameText" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:ChainSiteIDText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PharmacyDispenserTypeCode" minOccurs="0"/>
+					<xsd:element ref="pmp:MailOrderPharmacyIndicator" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
