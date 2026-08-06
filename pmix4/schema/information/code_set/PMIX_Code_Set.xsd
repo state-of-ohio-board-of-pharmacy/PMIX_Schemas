@@ -221,25 +221,47 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
         <xsd:restriction base="xsd:token">
             <xsd:enumeration value="01">
                 <xsd:annotation>
-                    <xsd:documentation>Patient</xsd:documentation>
+                    <xsd:documentation>Parent/Legal Guardian</xsd:documentation>
                 </xsd:annotation>
             </xsd:enumeration>
             <xsd:enumeration value="02">
                 <xsd:annotation>
-                    <xsd:documentation>Parent/Legal Guardian</xsd:documentation>
-                </xsd:annotation>
-            </xsd:enumeration>
-            <xsd:enumeration value="03">
-                <xsd:annotation>
                     <xsd:documentation>Spouse</xsd:documentation>
                 </xsd:annotation>
             </xsd:enumeration>
-            <xsd:enumeration value="04">
+            <xsd:enumeration value="03">
                 <xsd:annotation>
                     <xsd:documentation>Caregiver</xsd:documentation>
                 </xsd:annotation>
             </xsd:enumeration>
             <xsd:enumeration value="99">
+                <xsd:annotation>
+                    <xsd:documentation>Other</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="DroppingOffRelationshipToPatientCodeType">
+        <xsd:annotation>
+            <xsd:documentation>Relationship of person dropping off Rx to the patient. AIR23. Note: uses 04=Other per ASAP 5.0.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Parent/Legal Guardian</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>Spouse</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="03">
+                <xsd:annotation>
+                    <xsd:documentation>Caregiver</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="04">
                 <xsd:annotation>
                     <xsd:documentation>Other</xsd:documentation>
                 </xsd:annotation>
