@@ -786,4 +786,47 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
+    <!-- ASAP 5.0 New Code Types -->
+    <xsd:simpleType name="GenderCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the gender of a person. PAT19</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="M">
+                <xsd:annotation>
+                    <xsd:documentation>Male</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="F">
+                <xsd:annotation>
+                    <xsd:documentation>Female</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="U">
+                <xsd:annotation>
+                    <xsd:documentation>Unknown/Undisclosed</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="N">
+                <xsd:annotation>
+                    <xsd:documentation>Nonbinary</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="X">
+                <xsd:annotation>
+                    <xsd:documentation>Unspecified/Other</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="GenderCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the gender of a person. PAT19</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:GenderCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
 </xsd:schema>
