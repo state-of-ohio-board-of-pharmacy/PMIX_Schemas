@@ -707,26 +707,26 @@ April 1, 2010 - Chad Garner, OSBP
             </xsd:documentation>
         </xsd:annotation>
     </xsd:element>
-    <xsd:element name="TimeWritten" type="xsd:dateTime" nillable="true">
+    <xsd:element name="TimeWritten" type="niem-xsd:token" nillable="true">
         <xsd:annotation>
             <xsd:documentation>
-                A precise time a prescription was written.
+                Time a prescription was written in UTC format HHMMSSZ.
                 DSP26
             </xsd:documentation>
         </xsd:annotation>
     </xsd:element>
-    <xsd:element name="TimeFilled" type="xsd:dateTime" nillable="true">
+    <xsd:element name="TimeFilled" type="niem-xsd:token" nillable="true">
         <xsd:annotation>
             <xsd:documentation>
-                A precise time a prescription was filled.
+                Time a prescription was filled in UTC format HHMMSSZ.
                 DSP27
             </xsd:documentation>
         </xsd:annotation>
     </xsd:element>
-    <xsd:element name="TimeSold" type="xsd:dateTime" nillable="true">
+    <xsd:element name="TimeSold" type="niem-xsd:token" nillable="true">
         <xsd:annotation>
             <xsd:documentation>
-                A precise time a prescription was sold.
+                Time a prescription was sold in UTC format HHMMSSZ.
                 DSP28
             </xsd:documentation>
         </xsd:annotation>
