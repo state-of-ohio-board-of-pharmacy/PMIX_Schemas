@@ -636,6 +636,14 @@ April 1, 2010 - Chad Garner, OSBP
                </xsd:annotation>
        </xsd:element>
 	<xsd:element name="Person" type="nc:PersonType"/>
+	<xsd:element name="PharmacistFillingFirstNameText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        First name or initials of the pharmacist filling the prescription. Moved from AIR10.
+        Replaces DSP36
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="PersonPrimaryContactInformation" type="nc:ContactInformationType">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -1115,6 +1123,7 @@ April 1, 2010 - Chad Garner, OSBP
                                         <xsd:element ref="pmp:TimeWritten" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeFilled" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeSold" minOccurs="0" maxOccurs="1" />
+                                        <xsd:element ref="pmp:PharmacistFillingFirstNameText" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
