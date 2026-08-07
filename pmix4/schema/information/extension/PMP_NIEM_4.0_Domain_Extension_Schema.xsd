@@ -468,6 +468,14 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="DiscountCardCode" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Discount card code.
+        Replaces DSP31
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="DispensedQuantity" type="niem-xsd:decimal" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -591,7 +599,7 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:element name="OpioidTreatmentCategoryCode" type="pmpcd:OpioidTreatmentCategoryCodeType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
-				The reason for an opioid prescription...
+				The reason for an opioid prescription...
 				Replaces DSP24
 			</xsd:documentation>
 		</xsd:annotation>
@@ -1115,6 +1123,7 @@ April 1, 2010 - Chad Garner, OSBP
                                         <xsd:element ref="pmp:TimeWritten" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeFilled" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeSold" minOccurs="0" maxOccurs="1" />
+					<xsd:element ref="pmp:DiscountCardCode" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
