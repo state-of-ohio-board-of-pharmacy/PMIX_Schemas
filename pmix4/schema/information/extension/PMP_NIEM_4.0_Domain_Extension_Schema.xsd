@@ -475,7 +475,7 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-        <xsd:element name="RemainingQuantity" type="xsd:nonNegativeInteger" nillable="true">
+        <xsd:element name="RemainingQuantity" type="pmp:NonNegativeDecimalType" nillable="true">
                 <xsd:annotation>
                         <xsd:documentation>
                                 Total quantity remaining for prescription.
@@ -636,6 +636,14 @@ April 1, 2010 - Chad Garner, OSBP
                </xsd:annotation>
        </xsd:element>
 	<xsd:element name="Person" type="nc:PersonType"/>
+	<xsd:element name="RemainingQuantityDrugDosageUnitsCode" type="pmpcd:DrugDosageUnitsCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Drug dosage units code for the total quantity remaining.
+        Replaces DSP30
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="PersonPrimaryContactInformation" type="nc:ContactInformationType">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -865,6 +873,19 @@ April 1, 2010 - Chad Garner, OSBP
 	<!--
   Types defined in the PMP Extension Schema and their associated declarations
   -->
+	<xsd:complexType name="NonNegativeDecimalType">
+		<xsd:annotation>
+			<xsd:documentation>
+				A decimal value that may not be negative. Permits fractional amounts while
+				retaining the non-negative constraint required of quantity values.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="niem-xsd:decimal">
+				<xsd:minInclusive value="0"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
 	<xsd:complexType name="PMPDocumentAugmentationType">
 		<xsd:complexContent>
 			<xsd:extension base="s:AugmentationType">
@@ -1111,10 +1132,11 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:ICD-10DiagnosticCodeText" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:OpioidTreatmentCategoryCode" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:PrescriptionSoldDate" minOccurs="0" maxOccurs="unbounded"/>
-                                        <xsd:element ref="pmp:RemainingQuantity" minOccurs="1" maxOccurs="1" />
+                                        <xsd:element ref="pmp:RemainingQuantity" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeWritten" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeFilled" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeSold" minOccurs="0" maxOccurs="1" />
+					<xsd:element ref="pmp:RemainingQuantityDrugDosageUnitsCode" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
