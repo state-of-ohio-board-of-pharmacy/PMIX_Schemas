@@ -786,4 +786,32 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
+    <!-- ASAP 5.0 New Code Types -->
+    <xsd:simpleType name="MethodOfDeliveryCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the method of delivery for picking up a prescription. AIR19</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Person Picked Up</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>Mailed/Shipped</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="MethodOfDeliveryCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the method of delivery for picking up a prescription. AIR19</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:MethodOfDeliveryCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
 </xsd:schema>
