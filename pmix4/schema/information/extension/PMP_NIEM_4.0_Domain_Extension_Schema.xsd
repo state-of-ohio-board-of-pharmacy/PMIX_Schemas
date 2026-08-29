@@ -636,6 +636,22 @@ April 1, 2010 - Chad Garner, OSBP
                </xsd:annotation>
        </xsd:element>
 	<xsd:element name="Person" type="nc:PersonType"/>
+	<xsd:element name="DEAScheduleStateDesignationCode" type="pmpcd:DEAScheduleStateDesignationCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        DEA Schedule or State Designation for the dispensed drug.
+        Replaces DSP34
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CompoundDrugIngredientDEAScheduleStateDesignationCode" type="pmpcd:DEAScheduleStateDesignationCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        DEA Schedule or State Designation of each ingredient in a compound drug.
+        Replaces CDI06
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="PersonPrimaryContactInformation" type="nc:ContactInformationType">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -965,6 +981,7 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:CompoundDrugIngredientDEAClassScheduleText" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:IngredientQuantity" minOccurs="1" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:CompoundDrugIngredientDrugDosageUnitsCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:CompoundDrugIngredientDEAScheduleStateDesignationCode" minOccurs="0" maxOccurs="unbounded"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
@@ -1115,6 +1132,7 @@ April 1, 2010 - Chad Garner, OSBP
                                         <xsd:element ref="pmp:TimeWritten" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeFilled" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeSold" minOccurs="0" maxOccurs="1" />
+					<xsd:element ref="pmp:DEAScheduleStateDesignationCode" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
