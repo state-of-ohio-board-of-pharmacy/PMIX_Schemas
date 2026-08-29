@@ -750,8 +750,17 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:element name="RelationshipToPatientCode" type="pmpcd:RelationshipToPatientCodeType">
 		<xsd:annotation>
 			<xsd:documentation>
-        Indicates an agent's relationship to a patient
+        Indicates the relationship of the person picking up Rx to the patient.
         Replaces AIR06
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DroppingOffRelationshipToPatientCode" type="pmpcd:DroppingOffRelationshipToPatientCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+        Indicates the relationship of the person dropping off Rx to the patient.
+        Uses code 04=Other per ASAP 5.0.
+        Replaces AIR23
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
@@ -935,7 +944,7 @@ April 1, 2010 - Chad Garner, OSBP
             <xsd:extension base="nc:PersonType">
                 <xsd:sequence>
                     <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
-                    <xsd:element ref="pmp:RelationshipToPatientCode" minOccurs="0"/>
+                    <xsd:element ref="pmp:DroppingOffRelationshipToPatientCode" minOccurs="0"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
