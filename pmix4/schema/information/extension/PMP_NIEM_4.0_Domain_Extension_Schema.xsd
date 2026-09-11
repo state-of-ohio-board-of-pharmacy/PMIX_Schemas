@@ -402,7 +402,7 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:element name="ClassificationCodeForAdditionalPaymentType" type="nc:TextType" nillable="true">
+	<xsd:element name="ClassificationCodeForAdditionalPaymentType" type="pmpcd:MethodOfPaymentCodeType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
         Classification code for additional payment type.
