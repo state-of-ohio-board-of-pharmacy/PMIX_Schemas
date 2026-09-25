@@ -795,6 +795,20 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="PersonPickingUpRx" type="pmp:PersonPickingUpRxType">
+		<xsd:annotation>
+			<xsd:documentation>
+        The person picking up the prescription. AIR03-19
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonDroppingOffRx" type="pmp:PersonDroppingOffRxType">
+		<xsd:annotation>
+			<xsd:documentation>
+        The person dropping off the prescription. AIR20-32
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="ReportExecutionDate" type="niem-xsd:date" substitutionGroup="nc:DateRepresentation" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -1158,6 +1172,8 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:ClassificationCodeForAdditionalPaymentType" minOccurs="0"/>
 					<xsd:element ref="pmp:PharmacistFillingLastNameText" minOccurs="0"/>
 					<xsd:element ref="pmp:PharmacistFillingFirstNameText" minOccurs="0"/>
+					<xsd:element ref="pmp:PersonPickingUpRx" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="pmp:PersonDroppingOffRx" minOccurs="0" maxOccurs="1"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
