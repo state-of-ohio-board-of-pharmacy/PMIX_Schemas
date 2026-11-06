@@ -687,23 +687,23 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:element name="PatientCountryOfNonUSResidentText" type="nc:TextType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
-        Country of non-U.S. resident patient.
+        Country of residence of a non-U.S. resident patient, used when the patient address is in a foreign country. Free text.
         Replaces PAT22
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:element name="PatientRaceCategoryText" type="nc:TextType" nillable="true">
+	<xsd:element name="PatientRaceCategoryCode" type="pmpcd:PatientRaceCategoryCodeType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
-        Race category of the patient.
+        Code used for general race category of the patient.
         Replaces PAT26
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:element name="PatientEthnicityText" type="nc:TextType" nillable="true">
+	<xsd:element name="PatientEthnicityCode" type="pmpcd:PatientEthnicityCodeType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
-        Ethnicity of the patient.
+        Code used to describe general ethnicity group of the patient.
         Replaces PAT27
       </xsd:documentation>
 		</xsd:annotation>
@@ -1005,8 +1005,8 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:PatientNameOfAnimalText" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientAlert" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:PatientCountryOfNonUSResidentText" minOccurs="0"/>
-					<xsd:element ref="pmp:PatientRaceCategoryText" minOccurs="0"/>
-					<xsd:element ref="pmp:PatientEthnicityText" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientRaceCategoryCode" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientEthnicityCode" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
