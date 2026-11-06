@@ -653,20 +653,22 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-        <xsd:element name="PatientPreferredOrAliasLastName" type="nc:TextType" nillable="true">
-               <xsd:annotation>
-                       <xsd:documentation>
-                               ASAP 5 field PAT24
-                       </xsd:documentation>
-               </xsd:annotation>
-       </xsd:element>
-       <xsd:element name="PatientPreferredOrAliasFirstName" type="nc:TextType" nillable="true">
-               <xsd:annotation>
-                       <xsd:documentation>
-                               ASAP 5 field PAT25
-                       </xsd:documentation>
-               </xsd:annotation>
-       </xsd:element>
+	<xsd:element name="PatientPreferredOrAliasLastNameText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Patient's preferred or alias last name, such as a preferred name, previous name, nickname, alias, or name used on insurance if different than the legal last name.
+        Replaces PAT24
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PatientPreferredOrAliasFirstNameText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Patient's preferred or alias first name, such as a preferred name, previous name, nickname, alias, or name used on insurance if different than the legal first name.
+        Replaces PAT25
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="Person" type="nc:PersonType"/>
 	<xsd:element name="PharmacistFillingFirstNameText" type="nc:TextType" nillable="true">
 		<xsd:annotation>
@@ -1003,6 +1005,8 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:SpeciesCode" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientLocationCode" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientNameOfAnimalText" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientPreferredOrAliasLastNameText" minOccurs="0"/>
+					<xsd:element ref="pmp:PatientPreferredOrAliasFirstNameText" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientAlert" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:PatientCountryOfNonUSResidentText" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientRaceCategoryCode" minOccurs="0"/>
