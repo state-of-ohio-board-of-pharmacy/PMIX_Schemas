@@ -1079,4 +1079,31 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
+    <xsd:simpleType name="DiscountCardCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code indicating whether a local or national discount card was used for payment. DSP31, DSP33</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Yes</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>No</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="DiscountCardCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code indicating whether a local or national discount card was used for payment. DSP31, DSP33</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:DiscountCardCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
 </xsd:schema>
