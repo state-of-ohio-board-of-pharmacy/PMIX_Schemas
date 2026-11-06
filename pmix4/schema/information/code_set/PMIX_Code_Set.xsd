@@ -891,4 +891,88 @@ March 31, 2010 - Chad Garner OSBP - Sync with ASAP 2007
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
+    <xsd:simpleType name="PatientRaceCategoryCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the general race category of the patient. PAT26</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>American Indian or Alaskan Native</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>Asian</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="03">
+                <xsd:annotation>
+                    <xsd:documentation>Black or African American</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="04">
+                <xsd:annotation>
+                    <xsd:documentation>Native Hawaiian or Other Pacific Islander</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="05">
+                <xsd:annotation>
+                    <xsd:documentation>White</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="06">
+                <xsd:annotation>
+                    <xsd:documentation>Multiracial</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="99">
+                <xsd:annotation>
+                    <xsd:documentation>Other/Unknown</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="PatientRaceCategoryCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the general race category of the patient. PAT26</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:PatientRaceCategoryCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:simpleType name="PatientEthnicityCodeSimpleType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the general ethnicity group of the patient. PAT27</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="01">
+                <xsd:annotation>
+                    <xsd:documentation>Hispanic or Latino</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="02">
+                <xsd:annotation>
+                    <xsd:documentation>Not Hispanic or Latino</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="99">
+                <xsd:annotation>
+                    <xsd:documentation>Undisclosed/Unknown</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="PatientEthnicityCodeType">
+        <xsd:annotation>
+            <xsd:documentation>A code identifying the general ethnicity group of the patient. PAT27</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="pmpcd:PatientEthnicityCodeSimpleType">
+                <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
 </xsd:schema>
