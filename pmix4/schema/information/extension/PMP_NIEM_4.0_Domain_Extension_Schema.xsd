@@ -708,6 +708,22 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="VeterinarySpeciesCode" type="pmpcd:VeterinarySpeciesCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code describing animal species.
+        Replaces PAT28
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AnimalLocationCode" type="pmpcd:AnimalLocationCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code describing the location of an animal.
+        Replaces PAT29
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="PersonPrimaryContactInformation" type="nc:ContactInformationType">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -1007,6 +1023,8 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:PatientCountryOfNonUSResidentText" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientRaceCategoryCode" minOccurs="0"/>
 					<xsd:element ref="pmp:PatientEthnicityCode" minOccurs="0"/>
+					<xsd:element ref="pmp:VeterinarySpeciesCode" minOccurs="0"/>
+					<xsd:element ref="pmp:AnimalLocationCode" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
