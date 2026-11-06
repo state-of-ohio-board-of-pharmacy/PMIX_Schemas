@@ -174,6 +174,14 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="DrugCannabisProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:DrugProductIdentifier">
+		<xsd:annotation>
+			<xsd:documentation>
+        Identifies a drug using a Cannabis product identifier.
+        Replaces DSP07 and DSP08 when DSP07 is 07 Cannabis
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="DrugDINProductIdentifier" type="nc:IdentificationType" substitutionGroup="pmp:DrugProductIdentifier">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -402,6 +410,14 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="ClassificationCodeForAdditionalPaymentType" type="pmpcd:MethodOfPaymentCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Classification code for additional payment type.
+        Replaces DSP32
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="CompoundDrugIngredientDEAClassScheduleText" type="nc:TextType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -581,6 +597,22 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="PharmacyDispenserTypeCode" type="pmpcd:PharmacyDispenserTypeCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code identifying the type of pharmacy or dispenser.
+        Replaces PHA14
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MailOrderPharmacyCode" type="pmpcd:MailOrderPharmacyCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code indicating whether the pharmacy is a mail order pharmacy (01 = Yes, 02 = No).
+        Replaces PHA15
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="NPIIdentifier" type="nc:IdentificationType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -591,7 +623,7 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:element name="OpioidTreatmentCategoryCode" type="pmpcd:OpioidTreatmentCategoryCodeType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
-				The reason for an opioid prescription...
+				The reason for an opioid prescription...
 				Replaces DSP24
 			</xsd:documentation>
 		</xsd:annotation>
@@ -636,6 +668,22 @@ April 1, 2010 - Chad Garner, OSBP
                </xsd:annotation>
        </xsd:element>
 	<xsd:element name="Person" type="nc:PersonType"/>
+	<xsd:element name="PharmacistFillingFirstNameText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+		        First name or initials of the pharmacist filling the prescription. Moved from AIR10.
+			Replaces DSP36
+		        </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PharmacistFillingLastNameText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+			Last name or initials of the pharmacist filling the prescription. Moved from AIR09.
+			Replaces DSP35
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="PatientCountryOfNonUSResidentText" type="nc:TextType" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -731,26 +779,26 @@ April 1, 2010 - Chad Garner, OSBP
             </xsd:documentation>
         </xsd:annotation>
     </xsd:element>
-    <xsd:element name="TimeWritten" type="xsd:dateTime" nillable="true">
+    <xsd:element name="TimeWritten" type="niem-xsd:token" nillable="true">
         <xsd:annotation>
             <xsd:documentation>
-                A precise time a prescription was written.
+                Time a prescription was written in UTC format HHMMSSZ.
                 DSP26
             </xsd:documentation>
         </xsd:annotation>
     </xsd:element>
-    <xsd:element name="TimeFilled" type="xsd:dateTime" nillable="true">
+    <xsd:element name="TimeFilled" type="niem-xsd:token" nillable="true">
         <xsd:annotation>
             <xsd:documentation>
-                A precise time a prescription was filled.
+                Time a prescription was filled in UTC format HHMMSSZ.
                 DSP27
             </xsd:documentation>
         </xsd:annotation>
     </xsd:element>
-    <xsd:element name="TimeSold" type="xsd:dateTime" nillable="true">
+    <xsd:element name="TimeSold" type="niem-xsd:token" nillable="true">
         <xsd:annotation>
             <xsd:documentation>
-                A precise time a prescription was sold.
+                Time a prescription was sold in UTC format HHMMSSZ.
                 DSP28
             </xsd:documentation>
         </xsd:annotation>
@@ -774,8 +822,30 @@ April 1, 2010 - Chad Garner, OSBP
 	<xsd:element name="RelationshipToPatientCode" type="pmpcd:RelationshipToPatientCodeType">
 		<xsd:annotation>
 			<xsd:documentation>
-        Indicates an agent's relationship to a patient
+        Indicates the relationship of the person picking up Rx to the patient.
         Replaces AIR06
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DroppingOffRelationshipToPatientCode" type="pmpcd:RelationshipToPatientCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+        Indicates the relationship of the person dropping off Rx to the patient.
+        Replaces AIR23
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonPickingUpRx" type="pmp:PersonPickingUpRxType">
+		<xsd:annotation>
+			<xsd:documentation>
+        The person picking up the prescription. AIR03-19
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonDroppingOffRx" type="pmp:PersonDroppingOffRxType">
+		<xsd:annotation>
+			<xsd:documentation>
+        The person dropping off the prescription. AIR20-32
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
@@ -962,7 +1032,7 @@ April 1, 2010 - Chad Garner, OSBP
             <xsd:extension base="nc:PersonType">
                 <xsd:sequence>
                     <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
-                    <xsd:element ref="pmp:RelationshipToPatientCode" minOccurs="0"/>
+                    <xsd:element ref="pmp:DroppingOffRelationshipToPatientCode" minOccurs="0"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
@@ -1061,6 +1131,8 @@ April 1, 2010 - Chad Garner, OSBP
 					<xsd:element ref="pmp:NCPDPIdentifier" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:ContactNameText" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element ref="pmp:ChainSiteIDText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="pmp:PharmacyDispenserTypeCode" minOccurs="0"/>
+					<xsd:element ref="pmp:MailOrderPharmacyCode" minOccurs="0"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
@@ -1142,6 +1214,11 @@ April 1, 2010 - Chad Garner, OSBP
                                         <xsd:element ref="pmp:TimeWritten" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeFilled" minOccurs="0" maxOccurs="1" />
                                         <xsd:element ref="pmp:TimeSold" minOccurs="0" maxOccurs="1" />
+					<xsd:element ref="pmp:ClassificationCodeForAdditionalPaymentType" minOccurs="0"/>
+					<xsd:element ref="pmp:PharmacistFillingLastNameText" minOccurs="0"/>
+					<xsd:element ref="pmp:PharmacistFillingFirstNameText" minOccurs="0"/>
+					<xsd:element ref="pmp:PersonPickingUpRx" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="pmp:PersonDroppingOffRx" minOccurs="0" maxOccurs="1"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
