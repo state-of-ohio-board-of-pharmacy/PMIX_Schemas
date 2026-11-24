@@ -919,6 +919,14 @@ April 1, 2010 - Chad Garner, OSBP
       </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<xsd:element name="MethodOfDeliveryCode" type="pmpcd:MethodOfDeliveryCodeType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>
+        Code indicating the method of delivery for picking up a prescription.
+        Replaces AIR19
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="ReportExecutionDate" type="niem-xsd:date" substitutionGroup="nc:DateRepresentation" nillable="true">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -1120,6 +1128,7 @@ April 1, 2010 - Chad Garner, OSBP
                 <xsd:sequence>
                     <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
                     <xsd:element ref="pmp:DroppingOffRelationshipToPatientCode" minOccurs="0"/>
+                    <xsd:element ref="pmp:PersonPrimaryContactInformation" minOccurs="0"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
@@ -1130,6 +1139,8 @@ April 1, 2010 - Chad Garner, OSBP
                 <xsd:sequence>
                     <xsd:element ref="pmp:PersonIdentifier" minOccurs="0"/>
                     <xsd:element ref="pmp:RelationshipToPatientCode" minOccurs="0"/>
+                    <xsd:element ref="pmp:PersonPrimaryContactInformation" minOccurs="0"/>
+                    <xsd:element ref="pmp:MethodOfDeliveryCode" minOccurs="0"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
